@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Cookies } from "react-cookie";
 import CryptoJS from "crypto-js";
-import "./Login.css";
+import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
 
 const cookies = new Cookies();
@@ -41,12 +41,11 @@ const LogIn = () => {
                         path: "/",
                         maxAge: 3600,
                         sameSite: "strict",
-                    }); 
+                    });
                     //alert("로그인 성공!!!");
-                    navigate('/',{replace:true});
+                    navigate("/", { replace: true });
                 }
             });
-
     }
 
     return (
