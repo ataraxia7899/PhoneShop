@@ -16,7 +16,17 @@ const pool = mariadb.createPool({
 });
 
 // 미들웨어 설정
-app.use(cors());
+app.use(
+	cors({
+		origin: [
+			'http://localhost:5173',
+			'http://localhost:3000',
+			'http://localhost:8080',
+			'https://phoneshop123.netlify.app', // 프론트엔드 배포 URL
+		],
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(express.static('public'));
 
