@@ -108,7 +108,7 @@ export default function Nav(props) {
                                     }}
                                     onClick={() => {
                                         cookies.remove("ID");
-                                        navigate("/");
+                                        window.location.reload();
                                     }}
                                 >
                                     로그아웃
