@@ -13,7 +13,7 @@ const navItems = [
     { label: "삼성", href: "/" },
     { label: "애플", href: "/" },
     { label: "기타", href: "/" },
-    { label: "요금제", href: "/Ester" },
+    { label: "요금제", href: "/cart" },
 ];
 
 export default function Nav(props) {
