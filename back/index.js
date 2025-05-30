@@ -99,16 +99,44 @@ app.post("/register", async (req, res) => {
         const newNick = req.body.Nickname;
 
         const conn = await pool.getConnection();
-        const result = await conn.query(
-            "INSERT INTO user(ID, PW, Nickname) VALUES (?,?,?)",
-            [newID, newPW, newNick]
-        );
+        await conn.query("INSERT INTO user(ID, PW, Nickname) VALUES (?,?,?)", [
+            newID,
+            newPW,
+            newNick,
+        ]);
         conn.release();
 
         res.json({ success: true, message: "회원가입 성공" });
     } catch (error) {
         console.error("회원가입 에러:", error);
         res.status(500).json({ error: "회원가입 처리 실패" });
+    }
+});
+
+// 장바구니
+app.get("/cart", async (req, res) => {
+    try {
+        const ID = req.query.ID;
+        const conn = await pool.getConnection();
+        const user_ID = await conn.query(
+            "SELECT user_id FROM users WHERE ID = (?)",
+            [ID]
+        );
+        const cart_Info = await conn.query(
+            "SElECT product_id,quantity FROM cart WHERE user_id =(?)",
+            [user_ID[0].user_id]
+        );
+        const result = await conn.query(
+            "SELECT * FROM products WHERE product_id = (?)",
+            [cart_Info[0].product_id]
+        );
+
+        conn.release();
+
+        res.json(result);
+    } catch (error) {
+        console.error("장바구니 에러:", error);
+        res.status(500).json({ error: "장바구니 처리 실패" });
     }
 });
 
