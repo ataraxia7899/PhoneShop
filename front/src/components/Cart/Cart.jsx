@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 import { loadTossPayments } from "@tosspayments/payment-sdk";
+import { Cookies } from "react-cookie";
+import CryptoJS from "crypto-js";
+
+const cookies = new Cookies();
+const secretKey = "superduper";
 
 export default function Cart() {
     const navigate = useNavigate();
-    const [clientKey, setClientKey] = useState(""); // 누락된 상태 추가
+    const [ID, setID] = useState("");
+    const [allChecked, setAllChecked] = useState(false);
+    const [clientKey, setClientKey] = useState("");
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
@@ -46,10 +53,41 @@ export default function Cart() {
     // 현재 선택된 값을 가져오는 헬퍼 함수
     const getSelectedColor = (item) =>
         item.colorOptions[item.selectedColorIndex];
-    const getSelectedStorage = (item) =>
-        item.storageOptions[item.selectedStorageIndex];
 
-    const [allChecked, setAllChecked] = useState(false);
+    //쿠키값에 저장된 아이디로 장바구니에 담긴 상품 목록 가져오기
+    useEffect(() => {
+        const encryptedID = cookies.get("ID");
+        if (encryptedID !== undefined) {
+            const decryptedID = CryptoJS.AES.decrypt(
+                encryptedID,
+                secretKey
+            ).toString(CryptoJS.enc.Utf8);
+            setID(decryptedID);
+        }
+        fetch(`http://localhost:8080/cart/?ID=dragon`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                data.map((info) => {
+                    const temp = {
+                        id: info.product_id + 2,
+                        name: info.name,
+                        brand: info.brand,
+                        price: info.price,
+                        quantity: 1,
+                        image: info.image_url,
+                        colorOptions: ["미드나이트 블랙", "실버", "골드"],
+                        selectedColorIndex: 0, // "미드나이트 블랙"
+                        storage: info.strg,
+                        checked: false,
+                    };
+                    setCartItems((prev) => [...prev, temp]);
+                });
+            });
+    }, []);
 
     // 토스 페이먼츠 클라이언트 키 가져오기
     useEffect(() => {
