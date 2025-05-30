@@ -79,7 +79,7 @@ const SignUp = () => {
 			return alert('아이디와 비밀번호를 확인해주세요');
 		}
 
-		await fetch(`http://localhost:8080/register`, {
+		await fetch(`${API_URL}/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
