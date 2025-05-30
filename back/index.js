@@ -391,3 +391,56 @@ process.on("SIGINT", async () => {
     }
     process.exit(0);
 });
+
+//
+//
+//
+//
+//
+//
+// node.js 24시간 호스팅 15분 슬립 모드 방지
+const keepAlive = () => {
+    const interval = 12 * 60 * 1000; // 12분마다
+
+    setInterval(async () => {
+        try {
+            // 1. 자체 헬스체크 (환경변수 또는 하드코딩된 URL 사용)
+            const serverUrl =
+                process.env.RENDER_EXTERNAL_URL ||
+                "https://your-app-name.onrender.com";
+
+            // fetch 대신 axios 사용 (Node.js 환경에서 더 안정적)
+            const axios = require("axios");
+            const response = await axios.get(`${serverUrl}/health`);
+
+            // 2. 메모리 및 성능 모니터링
+            const memUsage = process.memoryUsage();
+            console.log("Keep-alive check:", {
+                timestamp: new Date().toISOString(),
+                memory: `${Math.round(memUsage.heapUsed / 1024 / 1024)}MB`,
+                uptime: `${Math.round(process.uptime())}s`,
+                status: response.status,
+            });
+
+            // 3. 가비지 컬렉션
+            if (global.gc) {
+                global.gc();
+            }
+        } catch (error) {
+            console.error("Keep-alive error:", error.message);
+        }
+    }, interval);
+};
+
+// 헬스체크 엔드포인트 (Express 앱에 추가)
+app.get("/health", (req, res) => {
+    res.json({
+        status: "healthy",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        memory: process.memoryUsage(),
+    });
+});
+
+// 서버 시작 후 Keep-Alive 실행
+keepAlive();
