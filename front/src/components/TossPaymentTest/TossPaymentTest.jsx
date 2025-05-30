@@ -10,7 +10,7 @@ const TossPaymentTest = () => {
 
 	// 서버에서 클라이언트 키 가져오기
 	useEffect(() => {
-		fetch(`${API_URL}api/payment/client-key`)
+		fetch(`${API_URL}/api/payment/client-key`)
 			.then((res) => res.json())
 			.then((data) => setClientKey(data.clientKey))
 			.catch((err) => console.error('클라이언트 키 조회 실패:', err));
