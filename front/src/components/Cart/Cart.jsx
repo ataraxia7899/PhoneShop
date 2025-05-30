@@ -73,23 +73,30 @@ export default function Cart() {
 				'Content-Type': 'application/json',
 			},
 		})
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				return response.json();
+			})
 			.then((data) => {
-				data.map((info) => {
-					const temp = {
-						id: info.product_id + 2,
-						name: info.name,
-						brand: info.brand,
-						price: info.price,
-						quantity: 1,
-						image: info.image_url,
-						colorOptions: ['미드나이트 블랙', '실버', '골드'],
-						selectedColorIndex: 0, // "미드나이트 블랙"
-						storage: info.strg,
-						checked: false,
-					};
-					setCartItems((prev) => [...prev, temp]);
-				});
+				if (Array.isArray(data)) {
+					data.map((info) => {
+						const temp = {
+							id: info.product_id + 2,
+							name: info.name,
+							brand: info.brand,
+							price: info.price,
+							quantity: 1,
+							image: info.image_url,
+							colorOptions: ['미드나이트 블랙', '실버', '골드'],
+							selectedColorIndex: 0, // "미드나이트 블랙"
+							storage: info.strg,
+							checked: false,
+						};
+						setCartItems((prev) => [...prev, temp]);
+					});
+				}
 			});
 	}, []);
 
