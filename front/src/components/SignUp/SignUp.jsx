@@ -43,14 +43,15 @@ const SignUp = () => {
 	}
 
 	function pwCheck(e) {
-		setPW(e.target.value);
+		const value = e.target.value;
+		setPW(value);
 
 		let reg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 
 		if (PW.length < 8 || PW.length > 12) {
 			e.target.value = '';
 			setCheckPW(false);
-			return alert('비밀번호를 8~12로 입력해주세요');
+			return alert('비밀번호를 8~25글자로 입력해주세요');
 		} else if (!reg.test(PW)) {
 			e.target.value = '';
 			setCheckPW(false);
