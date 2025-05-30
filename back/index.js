@@ -25,6 +25,8 @@ app.use(
 			'https://phoneshop123.netlify.app', // 프론트엔드 배포 URL
 		],
 		credentials: true,
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 	})
 );
 app.use(express.json());
