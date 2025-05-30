@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 // 환경변수에서 토스페이먼츠 키 가져오기
 const TOSS_CLIENT_KEY = process.env.TOSS_CLIENT_KEY;
-const TOSS_SECRET_KEY = process.env.toss_SECRET_KEY;
+const TOSS_SECRET_KEY = process.env.TOSS_SECRET_KEY;
 const PORT = process.env.PORT || 8080; // 기본 포트를 8080으로 설정
 
 // 토스페이먼츠 키 설정 확인
