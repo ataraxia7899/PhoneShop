@@ -1,0 +1,118 @@
+#login_container {
+    width: 100%;
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px; /* 제목과 폼 사이 간격 */
+}
+
+.login_form {
+    /* 3D 효과 - 회원가입과 동일 */
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border-radius: 20px;
+    padding: 50px; /* 패딩 조정 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    /* 3D 입체감 */
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff,
+        inset 5px 5px 10px rgba(255, 255, 255, 0.5),
+        inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+
+    /* 원근감과 회전 */
+    perspective: 1000px;
+    transform: rotateX(5deg) rotateY(-5deg);
+    transform-style: preserve-3d;
+}
+
+.login_form > input {
+    width: 400px;
+    height: 50px; /* 높이 조정 */
+    font-size: 18px;
+
+    /* 3D 효과 추가 */
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    border: none;
+    padding: 15px;
+
+    /* 3D 입체감 */
+    box-shadow: inset 8px 8px 16px #d1d1d1, inset -8px -8px 16px #ffffff,
+        2px 2px 5px rgba(0, 0, 0, 0.1);
+
+    /* 3D 변형 */
+    transform: translateZ(10px);
+    transition: all 0.2s ease;
+}
+
+.login_form > input:focus {
+    outline: none;
+    transform: translateZ(15px) scale(1.02);
+    box-shadow: inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff,
+        0 5px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+.login_form > input:hover {
+    transform: translateZ(12px);
+    box-shadow: inset 8px 8px 16px #d1d1d1, inset -8px -8px 16px #ffffff,
+        3px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.login_form > button {
+    width: 430px; /* input보다 약간 넓게 */
+    height: 60px; /* 높이 조정 */
+    font-size: 18px;
+    font-weight: 600;
+
+    /* 3D 효과 추가 - 강조된 스타일 */
+    border-radius: 10px;
+    background: linear-gradient(145deg, #4a90e2, #357abd);
+    border: none;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+
+    /* 3D 입체감 */
+    box-shadow: 8px 8px 16px rgba(74, 144, 226, 0.3),
+        -8px -8px 16px rgba(255, 255, 255, 0.1),
+        inset 3px 3px 8px rgba(255, 255, 255, 0.2),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.1);
+
+    /* 3D 변형 */
+    transform: translateZ(15px);
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.login_form > button:hover {
+    transform: translateZ(18px) scale(1.02);
+    box-shadow: 10px 10px 20px rgba(74, 144, 226, 0.4),
+        -10px -10px 20px rgba(255, 255, 255, 0.1),
+        inset 3px 3px 10px rgba(255, 255, 255, 0.3),
+        inset -3px -3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.login_form > button:active {
+    transform: translateZ(12px) scale(0.98);
+    box-shadow: 5px 5px 10px rgba(74, 144, 226, 0.3),
+        -5px -5px 10px rgba(255, 255, 255, 0.1),
+        inset 5px 5px 12px rgba(0, 0, 0, 0.1),
+        inset -5px -5px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* 로그인 제목 스타일 */
+.login_title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    /* 3D 효과 추가 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1),
+        -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
