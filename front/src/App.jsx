@@ -18,9 +18,8 @@ function App() {
                     <Route path="/LogIn" element={<LogIn />}></Route>
                     <Route path="/SignUp" element={<SignUp />}></Route>
                     <Route path="/Ester" element={<Ester />}></Route>
+                    <Route path="/Cart" element={<Cart />}></Route>
                 </Routes>
-                <TossPaymentTest />
-                <Cart />
                 <Footer />
             </BrowserRouter>
         </>
