@@ -10,8 +10,11 @@ PhoneShop은 최신 스마트폰과 요금제를 비교·구매할 수 있는 �
 - **백엔드:** Node.js, Express, MariaDB, Axios
 - **결제:** 토스페이먼츠 API 연동
 - **호스팅:**
-  - 프론트엔드: [**Netlify**](https://www.netlify.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop123.netlify.app/) >
-  - 백엔드: [**Render**](https://render.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop-bsh6.onrender.com) >
+  <br>     [![Netlify Status](https://api.netlify.com/api/v1/badges/ba8dbc9d-ed12-49e1-9697-64653c51a803/deploy-status)](https://app.netlify.com/projects/phoneshop123/deploys)
+  <br>
+     - 프론트엔드: [**Netlify**](https://www.netlify.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop123.netlify.app/) >
+  <br>
+     - 백엔드: [**Render**](https://render.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop-bsh6.onrender.com) >
 
 ## 📂 프로젝트 구조
 
