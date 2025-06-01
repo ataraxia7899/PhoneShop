@@ -8,11 +8,11 @@ const app = express();
 
 // MariaDB 연결 풀 설정
 const pool = mariadb.createPool({
-	host: '192.168.0.191',
-	user: '2team',
-	password: '2team',
-	database: '2team',
-	//port: "3306"
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+	// port: process.env.DB_PORT
 });
 
 // 미들웨어 설정
