@@ -6,7 +6,7 @@ PhoneShop은 최신 스마트폰과 요금제를 비교·구매할 수 있는 �
 
 ## 🛠️ 기술 스택
 
-- **프론트엔드:** React, Vite, CSS Modules
+- **프론트엔드:** React, Vite
 - **백엔드:** Node.js, Express, MariaDB, Axios
 - **결제:** 토스페이먼츠 API 연동
 - **호스팅:**
@@ -17,12 +17,33 @@ PhoneShop은 최신 스마트폰과 요금제를 비교·구매할 수 있는 �
 
 ```
 📦 PhoneShop
-├── 📁 front/   # 프론트엔드 (React + Vite)
-├── 📁 back/    # 백엔드 (Express + MariaDB)
-├── 📄 package.json
-├── 📄 package-lock.json
-├── 📄 .gitignore
-└── 📖 README.md
+├── 📁 front/                # 프론트엔드(React + Vite)
+│   ├── 📁 public/           # 정적 파일(이미지, favicon 등)
+│   ├── 📁 src/              # 소스 코드
+│   │   ├── 📁 assets/       # 이미지, 아이콘 등 에셋
+│   │   ├── 📁 components/   # 리액트 컴포넌트
+│   │   │   ├── Cart/        # 장바구니 관련 컴포넌트
+│   │   │   ├── Ester/       # 이스터에그/특수효과 컴포넌트
+│   │   │   ├── Footer/      # 푸터 컴포넌트
+│   │   │   ├── Home/        # 홈(메인) 페이지 컴포넌트
+│   │   │   ├── LogIn/       # 로그인 컴포넌트
+│   │   │   ├── Nav/         # 네비게이션 바 컴포넌트
+│   │   │   ├── SignUp/      # 회원가입 컴포넌트
+│   │   │   └── TossPaymentTest/ # 토스 결제 테스트 컴포넌트
+│   │   ├── App.jsx          # 라우팅 및 전체 앱 구조
+│   │   ├── main.jsx         # 앱 진입점
+│   │   ├── index.css        # 전체 스타일
+│   │   └── utils/           # 유틸리티 함수 및 설정
+│   ├── package.json         # 프론트엔드 패키지 설정
+│   └── .env                 # 프론트엔드 환경변수
+├── 📁 back/                 # 백엔드(Express + MariaDB)
+│   ├── index.js             # 백엔드 서버 진입점
+│   ├── package.json         # 백엔드 패키지 설정
+│   └── .env                 # 백엔드 환경변수
+├── 📄 package.json          # 루트 패키지(공통 의존성)
+├── 📄 package-lock.json     # 의존성 버전 고정 파일
+├── 📄 .gitignore            # Git 관리 제외 파일 목록
+└── 📖 README.md             # 프로젝트 설명서
 ```
 
 ## 🏃‍♂️ 설치 및 실행 방법
