@@ -7,9 +7,9 @@ import Footer from "./components/Footer/Footer";
 import Ester from "./components/Ester/Ester";
 import TossPaymentTest from "./components/TossPaymentTest/TossPaymentTest";
 import Cart from "./components/Cart/Cart";
-// import Phone from "./components/Phone/Phone";
-// import Detail from "./components/Detail/Detail";
-// import Mypage from "./components/Mypage/Mypage";
+import Phone from "./components/Phone/Phone";
+import Detail from "./components/Detail/Detail";
+import Mypage from "./components/Mypage/Mypage";
 import PlanRecommend from "./components/PlanRecommend/PlanRecommend";
 
 function App() {
@@ -19,11 +19,11 @@ function App() {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
-                    {/* <Route path="/Phone" element={<Phone />}></Route>
-                    <Route path="/Detail" element={<Detail />}></Route> */}
+                    <Route path="/Phone" element={<Phone />}></Route>
+                    <Route path="/Detail" element={<Detail />}></Route>
                     <Route path="/LogIn" element={<LogIn />}></Route>
                     <Route path="/SignUp" element={<SignUp />}></Route>
-                    {/* <Route path="/Mypage" element={<Mypage />}></Route> */}
+                    <Route path="/Mypage" element={<Mypage />}></Route>
                     <Route path="/Ester" element={<Ester />}></Route>
                     <Route path="/Cart" element={<Cart />}></Route>
                     <Route
