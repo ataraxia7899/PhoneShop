@@ -358,3 +358,109 @@
 		margin-bottom: 10px;
 	}
 }
+
+/* Detail.css에 추가할 옵션 관련 스타일 */
+
+.option-section {
+	margin: 20px 0;
+	padding: 15px;
+	background: #f8f9fa;
+	border-radius: 8px;
+	border-left: 4px solid #667eea;
+}
+
+.option-title {
+	font-size: 16px;
+	font-weight: 600;
+	color: #495057;
+	margin-bottom: 12px;
+}
+
+.option-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 10px;
+}
+
+.option-btn {
+	padding: 8px 16px;
+	border: 2px solid #dee2e6;
+	border-radius: 6px;
+	background: white;
+	color: #495057;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-weight: 500;
+}
+
+.option-btn:hover {
+	border-color: #667eea;
+}
+
+.option-btn.selected {
+	border-color: #667eea;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	font-weight: 600;
+}
+
+.color-btn {
+	min-width: 80px;
+}
+
+.selected-option {
+	font-size: 14px;
+	color: #28a745;
+	font-weight: 600;
+	margin: 0;
+}
+
+.quantity-controls {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.quantity-btn {
+	width: 40px;
+	height: 40px;
+	border: 2px solid #667eea;
+	border-radius: 50%;
+	background: white;
+	color: #667eea;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+	background: #667eea;
+	color: white;
+}
+
+.quantity-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.quantity-display {
+	font-size: 16px;
+	font-weight: 600;
+	color: #495057;
+	min-width: 60px;
+	text-align: center;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+	.option-buttons {
+		justify-content: center;
+	}
+
+	.option-btn {
+		flex: 1;
+		min-width: 80px;
+	}
+}
