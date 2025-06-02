@@ -46,6 +46,11 @@ export default function Cart() {
 		},
 	]);
 
+	// 클릭됐을 때 해당 아이템 정보를 state를 이용해 Detail 컴포넌트로 전달
+	const handleItemNameClick = (item) => {
+		navigate('/Detail', { state: { item: item, from: 'cart' } });
+	};
+
 	// 옵션 변경 함수
 	const updateItemOption = (id, optionType, selectedIndex) => {
 		setCartItems(
@@ -69,6 +74,7 @@ export default function Cart() {
 			setID(decryptedID);
 		}
 		fetch(`${API_URL}/cart/?ID=dragon`, {
+			// 주소 수정 필요
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -160,7 +166,7 @@ export default function Cart() {
 			.reduce((total, item) => total + item.price * item.quantity, 0);
 	};
 
-	// 주문 상품명 생성 (누락된 함수 추가)
+	// 주문 상품명 생성
 	const getOrderName = () => {
 		const selectedItems = cartItems.filter((item) => item.checked);
 		if (selectedItems.length === 0) return '';
@@ -290,9 +296,8 @@ export default function Cart() {
 										<div className="item-brand">{item.brand}</div>
 										<div
 											className="item-name"
-											onClick={() => {
-												navigate('/Ester');
-											}}
+											onClick={() => handleItemNameClick(item)}
+											style={{ cursor: 'pointer' }}
 										>
 											{item.name}
 										</div>
