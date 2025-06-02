@@ -10,8 +10,8 @@ const secretKey = "superduper";
 
 // GooeyNav 버튼 데이터
 const navItems = [
-    { label: "삼성", href: "/" },
-    { label: "애플", href: "/" },
+    { label: "삼성", href: '/phone/?brand="samsung"' },
+    { label: "애플", href: '/phone/?brand="apple"' },
     { label: "요금제 추천", href: "/api/smartchoice/recommend" },
     { label: "장바구니", href: "/cart", requireLogin: true },
 ];
