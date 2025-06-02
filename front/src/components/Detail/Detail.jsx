@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Detail.css';
 
@@ -11,6 +11,12 @@ const Detail = () => {
 	// 이전 컴포넌트 이름을 from으로 전달받음
 	const from = location.state?.from;
 	// state 끝에 ? 를 추가해 옵셔널 체이닝 기능을 통해 오류 방지
+
+	const [selectedStorage, setSelectedStorage] = useState(item?.storage || '');
+	const [selectedColorIndex, setSelectedColorIndex] = useState(
+		item?.selectedColorIndex || 0
+	);
+	const [quantity, setQuantity] = useState(item?.quantity || 1);
 
 	if (!item) {
 		return (
@@ -68,14 +74,73 @@ const Detail = () => {
 					<h3>최종 혜택 적용 예상가 {item.price?.toLocaleString()}원</h3>
 
 					{/* 저장 용량 정보 */}
-					{item.storage && <h4>용량: {item.storage}</h4>}
-
-					{/* 상품 색상 정보 */}
-					{item.colorOptions && item.selectedColorIndex !== undefined && (
-						<h4>색상: {item.colorOptions[item.selectedColorIndex]}</h4>
+					{item.storageOptions && item.storageOptions.length > 0 && (
+						<div className="option-section">
+							<h4 className="option-title">용량 선택:</h4>
+							<div className="option-buttons">
+								{item.storageOptions.map((storage, index) => (
+									<button
+										key={index}
+										className={`option-btn ${
+											selectedStorage === storage ? 'selected' : ''
+										}`}
+										onClick={() => setSelectedStorage(storage)}
+									>
+										{storage}
+									</button>
+								))}
+							</div>
+							<p className="selected-option">선택된 용량: {selectedStorage}</p>
+						</div>
 					)}
 
-					<h4>수량: {item.quantity}개</h4>
+					{/* 상품 색상 정보 */}
+					{item.colorOptions && item.colorOptions.length > 0 && (
+						<div className="option-section">
+							<h4 className="option-title">색상 선택:</h4>
+							<div className="option-buttons">
+								{item.colorOptions.map((color, index) => (
+									<button
+										key={index}
+										className={`option-btn color-btn ${
+											selectedColorIndex === index ? 'selected' : ''
+										}`}
+										onClick={() => setSelectedColorIndex(index)}
+									>
+										{color}
+									</button>
+								))}
+							</div>
+							<p className="selected-option">
+								선택된 색상: {item.colorOptions[selectedColorIndex]}
+							</p>
+						</div>
+					)}
+
+					{/* Cart에서 온 경우에만 수량 표시 */}
+					{from === 'cart' && (
+						<div className="option-section">
+							<h4 className="option-title">수량 선택:</h4>
+							<div className="quantity-controls">
+								<button
+									className="quantity-btn"
+									onClick={() =>
+										setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
+									}
+									disabled={quantity <= 1}
+								>
+									-
+								</button>
+								<span className="quantity-display">{quantity}개</span>
+								<button
+									className="quantity-btn"
+									onClick={() => setQuantity((prev) => prev + 1)}
+								>
+									+
+								</button>
+							</div>
+						</div>
+					)}
 
 					<h5>카드사별 무이자 할부 혜택</h5>
 					<h6>삼성/국민/현대/롯데카드 100만원 이상 결제 시 최대 24개월</h6>
@@ -83,7 +148,6 @@ const Detail = () => {
 					{/* <button style={{ marginTop: '30px' }} onClick={() => goToCart()}>
 						장바구니
 					</button> */}
-					{/* 조건부 버튼 렌더링 */}
 					<div className="button-section">
 						{/* Phone에서 온 경우에만 장바구니 담기 버튼 표시 */}
 						{from === 'phone' && (
@@ -91,9 +155,6 @@ const Detail = () => {
 								장바구니 담기
 							</button>
 						)}
-
-						{/* Cart에서 온 경우에만 주문하기 버튼 표시 */}
-						{from === 'cart' && console.log('장바구니에서 구경하러 왔음')}
 
 						{/* 출처 정보가 없는 경우 기본 장바구니 버튼 */}
 						{!from && (
