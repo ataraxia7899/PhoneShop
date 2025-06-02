@@ -16,7 +16,8 @@ const Phone = () => {
 			quantity: 1,
 			colorOptions: ['미드나이트 블랙', '실버', '골드'],
 			selectedColorIndex: 0,
-			storage: '256GB',
+			storageOptions: ['256GB', '512GB', '1TB'],
+			storage: '256GB', // 기본 선택값
 			checked: false,
 			features: [
 				'대화면과 폴더블 폼팩터로 확장되는 AI 경험',
@@ -36,7 +37,8 @@ const Phone = () => {
 			quantity: 1,
 			colorOptions: ['라벤더', '민트', '실버'],
 			selectedColorIndex: 0,
-			storage: '256GB',
+			storageOptions: ['256GB', '512GB', '1TB'],
+			storage: '256GB', // 기본 선택값
 			checked: false,
 			features: [
 				'AI와 만나 개성 표현과 소통이 더 편리해진 플렉스윈도우',
@@ -56,7 +58,8 @@ const Phone = () => {
 			quantity: 1,
 			colorOptions: ['티타늄 블랙', '티타늄 그레이', '티타늄 화이트'],
 			selectedColorIndex: 0,
-			storage: '512GB',
+			storageOptions: ['256GB', '512GB', '1TB'],
+			storage: '256GB', // 기본 선택값
 			checked: false,
 			features: [
 				'삼성/KB국민/롯데카드 3% 결제일 할인',
@@ -76,7 +79,8 @@ const Phone = () => {
 			quantity: 1,
 			colorOptions: ['팬텀 블랙', '팬텀 화이트', '팬텀 바이올렛'],
 			selectedColorIndex: 0,
-			storage: '256GB',
+			storageOptions: ['256GB', '512GB', '1TB'],
+			storage: '256GB', // 기본 선택값
 			checked: false,
 			features: [
 				'삼성/KB국민/롯데카드 3% 결제일 할인',
