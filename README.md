@@ -2,19 +2,19 @@
 
 ## 🖥️ 프로젝트 소개
 
-PhoneShop은 최신 스마트폰과 요금제를 비교·구매할 수 있는 온라인 폰 쇼핑몰 웹 프로젝트입니다.
+PhoneShop은 최신 스마트폰을 구매할 수 있는 온라인 폰 쇼핑몰 웹 프로젝트입니다.
 
 ## 🛠️ 기술 스택
 
-- **프론트엔드:** React, Vite
-- **백엔드:** Node.js, Express, MariaDB, Axios
-- **결제:** 토스페이먼츠 API 연동
-- **호스팅:**
-  <br>     [![Netlify Status](https://api.netlify.com/api/v1/badges/ba8dbc9d-ed12-49e1-9697-64653c51a803/deploy-status)](https://app.netlify.com/projects/phoneshop123/deploys)
-  <br>
-     - 프론트엔드: [**Netlify**](https://www.netlify.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop123.netlify.app/) >
-  <br>
-     - 백엔드: [**Render**](https://render.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop-bsh6.onrender.com) >
+-   **프론트엔드:** React, Vite
+-   **백엔드:** Node.js, Express, MariaDB, Axios
+-   **결제:** 토스페이먼츠 API 연동
+-   **호스팅:**
+    <br>     [![Netlify Status](https://api.netlify.com/api/v1/badges/ba8dbc9d-ed12-49e1-9697-64653c51a803/deploy-status)](https://app.netlify.com/projects/phoneshop123/deploys)
+    <br>
+       - 프론트엔드: [**Netlify**](https://www.netlify.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop123.netlify.app/) >
+    <br>
+       - 백엔드: [**Render**](https://render.com) (24시간 무료 호스팅) < [호스팅 된 사이트](https://phoneshop-bsh6.onrender.com) >
 
 ## 📂 프로젝트 구조
 
@@ -68,20 +68,20 @@ npm install
 npm start
 ```
 
-- 환경변수 설정: `.env` 파일을 `back` 폴더에 생성하세요.
-  ```
-  TOSS_CLIENT_KEY = 토스_클라이언트_키    (필수)
-  TOSS_SECRET_KEY = 토스_시크릿_키        (필수)
-  DB_HOST = DB_호스트주소                 (필수)
-  DB_USER = DB_사용자명                   (필수)
-  DB_PASSWORD = DB_비밀번호               (필수)
-  DB_NAME = DB_이름                       (필수)
-  PORT = 서버_포트번호                    (필수아님)
-  HOSTSERVER = 호스팅_주소                (필수아님)
-  # DB_PORT = DB_포트번호                 (필수아님, 기본 3306)
-  ```
-- MariaDB 연결 정보(`DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`)도 반드시 입력해야 합니다.
-- Render에서 배포 시 `.env` 파일에 호스팅 주소가 있으면 해당 주소로, 없으면 기본적으로 `localhost`로 연결됩니다.
+-   환경변수 설정: `.env` 파일을 `back` 폴더에 생성하세요.
+    ```
+    TOSS_CLIENT_KEY = 토스_클라이언트_키    (필수)
+    TOSS_SECRET_KEY = 토스_시크릿_키        (필수)
+    DB_HOST = DB_호스트주소                 (필수)
+    DB_USER = DB_사용자명                   (필수)
+    DB_PASSWORD = DB_비밀번호               (필수)
+    DB_NAME = DB_이름                       (필수)
+    PORT = 서버_포트번호                    (필수아님)
+    HOSTSERVER = 호스팅_주소                (필수아님)
+    # DB_PORT = DB_포트번호                 (필수아님, 기본 3306)
+    ```
+-   MariaDB 연결 정보(`DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`)도 반드시 입력해야 합니다.
+-   Render에서 배포 시 `.env` 파일에 호스팅 주소가 있으면 해당 주소로, 없으면 기본적으로 `localhost`로 연결됩니다.
 
 ---
 
@@ -93,13 +93,13 @@ npm install
 npm run dev
 ```
 
-- 환경변수 설정: `.env` 파일을 `front` 폴더에 생성하세요.
-  ```
-  VITE_API_URL = 백엔드_API_주소          (필수)
-  VITE_HOSTSERVER = 호스팅_주소           (필수아님)
-  ```
-- Netlify에서 배포 시 `.env` 파일에 API URL이 있으면 해당 주소로, 없으면 기본적으로 `localhost`로 연결됩니다.
-- 개발 서버는 기본적으로 [http://localhost:5173](http://localhost:5173)에서 실행됩니다.
+-   환경변수 설정: `.env` 파일을 `front` 폴더에 생성하세요.
+    ```
+    VITE_API_URL = 백엔드_API_주소          (필수)
+    VITE_HOSTSERVER = 호스팅_주소           (필수아님)
+    ```
+-   Netlify에서 배포 시 `.env` 파일에 API URL이 있으면 해당 주소로, 없으면 기본적으로 `localhost`로 연결됩니다.
+-   개발 서버는 기본적으로 [http://localhost:5173](http://localhost:5173)에서 실행됩니다.
 
 ---
 
