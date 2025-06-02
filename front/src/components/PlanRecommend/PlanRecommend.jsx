@@ -93,7 +93,7 @@ const PlanRecommend = () => {
 
     return (
         <div className="plan-recommend-container">
-            <h2>📱 맞춤 요금제 추천</h2>
+            <h2 style={{ margin: "18px 0" }}>📱 맞춤 요금제 추천</h2>
 
             <form onSubmit={handleSubmit} className="recommend-form">
                 <div className="form-group">
