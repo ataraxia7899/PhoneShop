@@ -51,9 +51,10 @@
 }
 
 .plan-grid {
+    margin: 25px 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px;
 }
 
 .plan-card {
@@ -67,6 +68,7 @@
 .plan-card h4 {
     color: #007bff;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .plan-price {
@@ -74,6 +76,9 @@
     font-weight: bold;
     color: #28a745;
     margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
 }
 
 .plan-details p {
