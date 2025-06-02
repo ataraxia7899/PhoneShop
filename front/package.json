@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tosspayments/payment-sdk": "^1.9.1",
+    "axios": "^1.9.0",
     "crypto-js": "^4.2.0",
     "react": "^19.1.0",
     "react-cookie": "^8.0.1",
