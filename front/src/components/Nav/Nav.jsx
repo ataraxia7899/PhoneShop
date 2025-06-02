@@ -12,7 +12,7 @@ const secretKey = "superduper";
 const navItems = [
     { label: "삼성", href: "/" },
     { label: "애플", href: "/" },
-    { label: "기타", href: "/" },
+    { label: "요금제 추천", href: "/api/smartchoice/recommend" },
     { label: "장바구니", href: "/cart", requireLogin: true },
 ];
 
