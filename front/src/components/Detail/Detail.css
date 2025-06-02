@@ -272,3 +272,89 @@
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 	transition: box-shadow 0.3s ease;
 }
+
+.button-section {
+	display: flex;
+	gap: 15px;
+	margin-top: 30px;
+	flex-wrap: wrap;
+}
+
+.btn-cart,
+.btn-order,
+.btn-secondary {
+	flex: 1;
+	min-width: 150px;
+	padding: 15px 20px;
+	border: none;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.btn-cart {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-cart:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-order {
+	background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+	color: white;
+	box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-order:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(40, 167, 69, 0.4);
+}
+
+.btn-secondary {
+	background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+	color: white;
+	box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.btn-secondary:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4);
+}
+
+.error-container {
+	text-align: center;
+	padding: 60px 20px;
+	background: white;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	max-width: 500px;
+	margin: 50px auto;
+}
+
+.error-container h2 {
+	color: #e74c3c;
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+	.button-section {
+		flex-direction: column;
+	}
+
+	.btn-cart,
+	.btn-order,
+	.btn-secondary {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}
