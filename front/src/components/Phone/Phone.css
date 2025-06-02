@@ -1,0 +1,50 @@
+.phonelist_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.phonelist {
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px 10px;
+    width: 300px;
+    height: 625px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.phonelist > button {
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 20px;
+    color: hsl(0, 0%, 100%);
+    background-color: #4a5568;
+    transition: border-color 0.25s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.phonelist > li {
+    color: rgb(80, 80, 80);
+    width: 65%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.phonelist_img {
+    width: 298px;
+    height: 300px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
