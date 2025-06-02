@@ -5,8 +5,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 160px; /* Nav 높이만큼 여백 */
     background-color: #f8f9fa;
+    padding-top: 95px;
+    padding-bottom: 140px;
 }
 
 .CartContainer {
