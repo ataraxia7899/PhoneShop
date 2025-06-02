@@ -110,7 +110,6 @@ const Phone = () => {
 					<h4>혜택가 {product.price.toLocaleString()}원</h4>
 					<button onClick={() => goToDetail(product)}>주문하기</button>
 
-					{/* 상품 특징 리스트 */}
 					<ul className="feature-list">
 						{product.features.map((feature, index) => (
 							<li key={index}>{feature}</li>
