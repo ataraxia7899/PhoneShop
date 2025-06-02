@@ -1,0 +1,162 @@
+/* 컨테이너 스타일 - 모던하고 깔끔하게 */
+.phonelist_container2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 90%;
+  margin: 50px auto;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap: 40px;
+}
+
+/* 이미지 영역 */
+.phonelist_container2-1 {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+}
+
+.phonelist_img2 {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+/* 텍스트/버튼 영역 */
+.phonelist_container2-2 {
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748; /* 어두운 텍스트 색상 */
+}
+
+/* 제목들 */
+.phonelist_container2-2 h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.phonelist_container2-2 h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568; /* 은은한 회색 */
+  margin-bottom: 12px;
+}
+
+.phonelist_container2-2 h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.phonelist_container2-2 h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4a5568; /* 중간 톤 블루 그라데이션 컬러 느낌 */
+  margin: 16px 0;
+}
+
+.phonelist_container2-2 h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #718096; /* 연한 회색 */
+  margin-top: 30px;
+}
+
+.phonelist_container2-2 h6 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #a0aec0;
+}
+
+/* 버튼 스타일 - 깔끔하고 반응형 */
+.phonelist_container2-2 > button {
+  padding: 14px 0;
+  border-radius: 100vw;
+  border: none;
+  background: linear-gradient(45deg, #4a5568, #2d3748);
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(45, 55, 72, 0.4);
+}
+
+.phonelist_container2-2 > button:hover {
+  background: linear-gradient(45deg, #2d3748, #4a5568);
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.6);
+  color: #edf2f7; /* 밝은 색으로 변경 */
+}
+
+/* 제품구성 영역 */
+.phonelist_container3 {
+  max-width: 1200px;
+  width: 90%;
+  margin: 60px auto 40px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748;
+}
+
+.phonelist_container3 h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* 제품 이미지들 */
+.phonelist_img3 {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.phonelist_img3 > img {
+  flex: 1 1 300px;
+  max-width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(45, 55, 72, 0.1);
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+/* .phonelist_img3 > img:hover {
+  transform: scale(1.05);
+} */
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .phonelist_container2 {
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 30px;
+  }
+
+  .phonelist_container2-1,
+  .phonelist_container2-2 {
+    flex: 1 1 100%;
+  }
+
+  .phonelist_img2 {
+    max-width: 100%;
+  }
+
+  .phonelist_container2-2 > button {
+    font-size: 1.1rem;
+  }
+}
