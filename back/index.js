@@ -155,6 +155,35 @@ app.get("/cart", async (req, res) => {
     }
 });
 
+//제품목록 페이지
+
+app.get("/phone", async (req, res) => {
+    try {
+        const brand = [];
+        const query_brand = req.query.brand;
+        const conn = await pool.getConnection();
+
+        if (query_brand == "samsung") {
+            brand.push("삼성");
+        } else if (query_brand == "apple") {
+            brand.push("애플");
+        } else {
+            brand.push("기타");
+        }
+
+        const result = await conn.query(
+            "SELECT * FROM products WHERE brand = (?)",
+            [brand[0]]
+        );
+        conn.release();
+
+        res.json(result);
+    } catch (error) {
+        console.error("제품목록 페이지 에러", error);
+        res.status(500).json({ error: "제품목록 페이지 에러" });
+    }
+});
+
 // 스마트초이스 요금제 추천 api
 app.get("/api/smartchoice/recommend", async (req, res) => {
     try {
