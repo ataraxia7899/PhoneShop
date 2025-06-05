@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Cookies } from "react-cookie";
 import "./Detail.css";
+import Alert from "../Alert/Alert";
+
+const cookies = new Cookies();
 
 const Detail = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const [login, setLogin] = useState(false);
 
     // Cart에서 제품 이름 클릭했을때 제목 값 (item)이나 제품 목록에서 구매하기 클릭 시 제품 제목
     const item = location.state?.item;
@@ -17,6 +23,8 @@ const Detail = () => {
         item?.selectedColorIndex || 0
     );
     const [quantity, setQuantity] = useState(item?.quantity || 1);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertConfig, setAlertConfig] = useState({});
 
     if (!item) {
         return (
@@ -30,7 +38,36 @@ const Detail = () => {
     }
 
     function goToCart() {
-        navigate("/Cart", { state: { item: item } });
+        if (login) {
+            // 로그인된 경우 - 장바구니 추가 성공 알림
+            setAlertConfig({
+                type: "success",
+                title: "장바구니 추가",
+                message: "상품이 장바구니에 추가되었습니다.",
+                onConfirm: () => {
+                    setShowAlert(false);
+                    navigate("/Cart", { state: { item: item } });
+                },
+                confirmText: "장바구니 보기",
+                showCancel: true,
+            });
+            setShowAlert(true);
+        } else {
+            // 로그인되지 않은 경우
+            setAlertConfig({
+                type: "warning",
+                title: "로그인 필요",
+                message: "장바구니 기능을 사용하려면 로그인이 필요합니다.",
+                onConfirm: () => {
+                    setShowAlert(false);
+                    navigate("/LogIn");
+                },
+                confirmText: "로그인하기",
+                cancelText: "취소",
+                showCancel: true,
+            });
+            setShowAlert(true);
+        }
     }
 
     // 뒤로가기 함수 - 출처에 따라 다른 페이지로 이동
@@ -43,6 +80,11 @@ const Detail = () => {
             navigate(-1); // 기본적으로 브라우저 뒤로가기
         }
     };
+
+    useEffect(() => {
+        const encryptedID = cookies.get("ID");
+        encryptedID && setLogin(true);
+    }, []);
 
     return (
         <>
@@ -212,6 +254,12 @@ const Detail = () => {
             <img src="./src/assets/ex3.jpg"/>
         </div>
     </div> */}
+
+            <Alert
+                isOpen={showAlert}
+                onClose={() => setShowAlert(false)}
+                {...alertConfig}
+            />
         </>
     );
 };
