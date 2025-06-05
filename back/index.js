@@ -156,31 +156,41 @@ app.get("/cart", async (req, res) => {
 });
 
 //제품목록 페이지
-
 app.get("/phone", async (req, res) => {
     try {
-        const brand = [];
         const query_brand = req.query.brand;
+        const search = req.query.search;
         const conn = await pool.getConnection();
 
+        let brand;
         if (query_brand == "samsung") {
-            brand.push("삼성");
+            brand = "삼성";
         } else if (query_brand == "apple") {
-            brand.push("애플");
+            brand = "애플";
         } else {
-            brand.push("기타");
+            brand = "기타";
         }
 
-        const result = await conn.query(
-            "SELECT * FROM products WHERE brand = (?)",
-            [brand[0]]
-        );
-        conn.release();
+        let sql = "SELECT * FROM products WHERE brand = ?";
+        const params = [brand];
 
+        if (search) {
+            sql += " AND name LIKE ?";
+            params.push(`%${search}%`);
+        }
+
+        const result = await conn.query(sql, params);
+
+        // const result = await conn.query(
+        //     "SELECT * FROM products WHERE brand = (?)",
+        //     [brand[0]]
+        // );
+        conn.release();
+        console.log(result);
         res.json(result);
     } catch (error) {
         console.error("제품목록 페이지 에러", error);
-        res.status(500).json({ error: "제품목록 페이지 에러" });
+        res.status(500).json([]);
     }
 });
 
