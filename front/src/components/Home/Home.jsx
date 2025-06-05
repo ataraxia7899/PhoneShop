@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import ScrollView from "./HomeItem/ScrollView";
+import Phone from "../Phone/Phone";
 
 export default function Home() {
     const bannerImages = [
@@ -17,10 +18,25 @@ export default function Home() {
     ];
 
     return (
-        <div style={{display: "flex", justifyContent: "center"}}>
-            <div style={{ width: "80%" }}>
-                <ScrollView images={bannerImages} />
+        <>
+            {/* 슬라이더 컴포넌트 */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ width: "80%" }}>
+                    <ScrollView images={bannerImages} />
+                </div>
             </div>
-        </div>
+
+            <div className="homeitem-container">
+                {/* 삼성 폰 추천 */}
+                <div className="recommend-container">
+                    <h1>삼성 추천 제품</h1>
+                    <Phone limit={4} brand="samsung" />
+                </div>
+                <div className="recommend-container">
+                    <h1>애플 추천 제품</h1>
+                    <Phone limit={4} brand="apple" />
+                </div>
+            </div>
+        </>
     );
 }
