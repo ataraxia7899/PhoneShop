@@ -8,10 +8,10 @@ import {
 } from "react-router-dom";
 import "./Phone.css";
 
-const Phone = () => {
+const Phone = (props) => {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const brand = searchParams.get("brand");
+    const brand = props.brand || searchParams.get("brand");
 
     const location = useLocation();
     const [phoneProducts, setPhoneProducts] = useState([]);
@@ -21,6 +21,9 @@ const Phone = () => {
     }
 
     useEffect(() => {
+        // brand가 없으면 요청 안함
+        if (!brand) return;
+
         fetch(`http://localhost:8080/phone/?brand=${brand}`, {
             headers: {
                 "Content-Type": "application/json",
@@ -65,33 +68,36 @@ const Phone = () => {
 
     return (
         <div className="phonelist_container">
-            {phoneProducts.map((product) => (
-                <div key={product.id} className="phonelist">
-                    <img
-                        src={product.image}
-                        className="phonelist_img"
-                        alt={product.name}
-                        onClick={() => goToDetail(product)}
-                        style={{ cursor: "pointer" }}
-                    />
-                    <h2
-                        onClick={() => goToDetail(product)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        {product.name}
-                    </h2>
-                    <h4>혜택가 {product.price.toLocaleString()}원</h4>
-                    <button onClick={() => goToDetail(product)}>
-                        주문하기
-                    </button>
+            {phoneProducts
+                // props로 limit값이 들어오면 제한 없으면 전체
+                .slice(0, props.limit || phoneProducts.length)
+                .map((product) => (
+                    <div key={product.id} className="phonelist">
+                        <img
+                            src={product.image}
+                            className="phonelist_img"
+                            alt={product.name}
+                            onClick={() => goToDetail(product)}
+                            style={{ cursor: "pointer" }}
+                        />
+                        <h2
+                            onClick={() => goToDetail(product)}
+                            style={{ cursor: "pointer" }}
+                        >
+                            {product.name}
+                        </h2>
+                        <h4>혜택가 {product.price.toLocaleString()}원</h4>
+                        <button onClick={() => goToDetail(product)}>
+                            주문하기
+                        </button>
 
-                    <ul className="feature-list">
-                        {product.features.map((feature, index) => (
-                            <li key={index}>{feature}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
+                        <ul className="feature-list">
+                            {product.features.map((feature, index) => (
+                                <li key={index}>{feature}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
         </div>
     );
 };
