@@ -1,0 +1,52 @@
+.search-container {
+    position: relative;
+    width: 145px;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-container.focused {
+    width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 40px 8px 16px; /* 우측 패딩 추가 */
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #4a5568;
+    box-shadow: 0 2px 8px rgba(74, 85, 104, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 16px; /* 위치 조정 */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 포커스 상태 시 아이콘 색상 변경 */
+.search-container.focused .search-icon path {
+    fill: #4a5568;
+}
+
+/* 검색창 트랜지션 효과 강화 */
+.search-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 포커스 시 아이콘 색상 변경 */
+.search-container.focused .search-icon path {
+    fill: #4a5568;
+    transition: fill 0.2s ease;
+}
