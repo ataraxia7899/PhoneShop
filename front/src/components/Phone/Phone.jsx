@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {
-    Link,
-    useNavigate,
-    useSearchParams,
-    useLocation,
-    useParams,
-} from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./Phone.css";
+import { getApiUrl } from "../../utils/config";
 
 const Phone = (props) => {
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const brand = props.brand || searchParams.get("brand");
+    const searchTerm = searchParams.get("q") || "";
+    const API_URL = getApiUrl();
 
-    const location = useLocation();
     const [phoneProducts, setPhoneProducts] = useState([]);
 
     function goToDetail(product) {
@@ -21,55 +17,62 @@ const Phone = (props) => {
     }
 
     useEffect(() => {
-        // brand가 없으면 요청 안함
-        if (!brand) return;
+        // brand, searchTerm 둘 다 없으면 호출하지 않음
+        if (!brand && !searchTerm) return;
 
-        fetch(`http://localhost:8080/phone/?brand=${brand}`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                const data2 = data.map(
-                    ({
-                        product_id,
-                        name,
-                        price,
-                        strg,
-                        color,
-                        image_url,
-                        description,
-                        stock,
-                        brand,
-                    }) => ({
-                        id: product_id,
-                        name,
-                        price,
-                        storageOptions: strg.split("|"),
-                        colorOptions: color.split("|"),
-                        image: image_url,
-                        features: description.split(","),
-                        stock,
-                        brand,
-                    })
+        const fetchData = async () => {
+            try {
+                const params = new URLSearchParams();
+                if (brand) params.append("brand", brand);
+                if (searchTerm) params.append("search", searchTerm);
+
+                const response = await fetch(
+                    `${API_URL}/phone?${params.toString()}`,
+                    {
+                        headers: { "Content-Type": "application/json" },
+                    }
                 );
+                if (!response.ok) throw new Error("네트워크 오류 발생");
 
-                const combined = [...data2];
+                const data = await response.json();
+                if (!Array.isArray(data)) {
+                    console.error("API 응답이 배열이 아님:", data);
+                    setPhoneProducts([]);
+                    return;
+                }
+                const processedData = data.map((item) => ({
+                    id: item.product_id,
+                    name: item.name,
+                    price: item.price,
+                    storageOptions: item.strg?.split("|") || [],
+                    colorOptions: item.color?.split("|") || [],
+                    image: item.image_url,
+                    features: item.description?.split(",") || [],
+                    stock: item.stock,
+                    brand: item.brand,
+                }));
 
-                const uniqueProducts = combined.filter(
-                    (product, index, self) =>
-                        index === self.findIndex((p) => p.id === product.id)
-                );
+                // 중복 제거
+                const uniqueProducts = [
+                    ...new Map(
+                        processedData.map((item) => [item.id, item])
+                    ).values(),
+                ];
 
                 setPhoneProducts(uniqueProducts);
-            });
-    }, [brand]);
+            } catch (error) {
+                console.error("데이터 불러오기 실패:", error);
+                setPhoneProducts([]); // 에러 시 빈 배열로 초기화
+                res.status(500).json([]);
+            }
+        };
+
+        fetchData();
+    }, [brand, searchTerm, API_URL]);
 
     return (
         <div className="phonelist_container">
             {phoneProducts
-                // props로 limit값이 들어오면 제한 없으면 전체
                 .slice(0, props.limit || phoneProducts.length)
                 .map((product) => (
                     <div key={product.id} className="phonelist">
@@ -90,7 +93,6 @@ const Phone = (props) => {
                         <button onClick={() => goToDetail(product)}>
                             주문하기
                         </button>
-
                         <ul className="feature-list">
                             {product.features.map((feature, index) => (
                                 <li key={index}>{feature}</li>
@@ -103,89 +105,3 @@ const Phone = (props) => {
 };
 
 export default Phone;
-
-// 예시 데이터
-// {
-// 	id: 1,
-// 	name: '갤럭시Z 폴드6 자급제',
-// 	brand: '삼성',
-// 	modelNumber: 'SM-F956NAKFKOO',
-// 	price: 2646200,
-// 	image: '../src/assets/폴드.JPG',
-// 	quantity: 1,
-// 	colorOptions: ['미드나이트 블랙', '실버', '골드'],
-// 	selectedColorIndex: 0,
-// 	storageOptions: ['256GB', '512GB', '1TB'],
-// 	storage: '256GB', // 기본 선택값
-// 	checked: false,
-// 	features: [
-// 		'대화면과 폴더블 폼팩터로 확장되는 AI 경험',
-// 		'가볍고 슬림한 디자인에 더욱 단단해진 내구성',
-// 		'고사양 게임도 쾌적하게 즐길 수 있는 게이밍 퍼포먼스',
-// 	],
-// 	rating: 4.8,
-// 	reviewCount: 1630,
-// },
-// {
-// 	id: 2,
-// 	name: '갤럭시Z 플립6 자급제',
-// 	brand: '삼성',
-// 	modelNumber: 'SM-F741NZYAKOO',
-// 	price: 1405300,
-// 	image: '../src/assets/플립.jpg',
-// 	quantity: 1,
-// 	colorOptions: ['라벤더', '민트', '실버'],
-// 	selectedColorIndex: 0,
-// 	storageOptions: ['256GB', '512GB', '1TB'],
-// 	storage: '256GB', // 기본 선택값
-// 	checked: false,
-// 	features: [
-// 		'AI와 만나 개성 표현과 소통이 더 편리해진 플렉스윈도우',
-// 		'자동으로 최적의 구도를 잡아주는 고화질 플렉스캠',
-// 		'하드웨어 성능 강화로 완성된 강력한 퍼포먼스',
-// 	],
-// 	rating: 4.7,
-// 	reviewCount: 1245,
-// },
-// {
-// 	id: 3,
-// 	name: '갤럭시 S25 울트라 자급제',
-// 	brand: '삼성',
-// 	modelNumber: 'SM-S938NZKAKOO',
-// 	price: 1576700,
-// 	image: '../src/assets/울트라.jpg',
-// 	quantity: 1,
-// 	colorOptions: ['티타늄 블랙', '티타늄 그레이', '티타늄 화이트'],
-// 	selectedColorIndex: 0,
-// 	storageOptions: ['256GB', '512GB', '1TB'],
-// 	storage: '256GB', // 기본 선택값
-// 	checked: false,
-// 	features: [
-// 		'삼성/KB국민/롯데카드 3% 결제일 할인',
-// 		'한단계 더 진화된 나만의 맞춤형 AI',
-// 		'2억 화소 광각, 5천만 화소 초광각',
-// 	],
-// 	rating: 4.9,
-// 	reviewCount: 2150,
-// },
-// {
-// 	id: 4,
-// 	name: '갤럭시 S25 자급제',
-// 	brand: '삼성',
-// 	modelNumber: 'SM-S931NLBEKOO',
-// 	price: 1072200,
-// 	image: '../src/assets/갤럭시.jpg',
-// 	quantity: 1,
-// 	colorOptions: ['팬텀 블랙', '팬텀 화이트', '팬텀 바이올렛'],
-// 	selectedColorIndex: 0,
-// 	storageOptions: ['256GB', '512GB', '1TB'],
-// 	storage: '256GB', // 기본 선택값
-// 	checked: false,
-// 	features: [
-// 		'삼성/KB국민/롯데카드 3% 결제일 할인',
-// 		'한단계 더 진화된 나만의 맞춤형 AI',
-// 		'맞춤형 필터, 오디오 편집도 AI로 간편해진 카메라',
-// 	],
-// 	rating: 4.6,
-// 	reviewCount: 1890,
-// },
