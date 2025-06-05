@@ -164,22 +164,43 @@ app.get("/cart", async (req, res) => {
 
 app.get("/phone", async (req, res) => {
     try {
-        const brand = [];
         const query_brand = req.query.brand;
+        const search = req.query.search;
         const conn = await pool.getConnection();
 
-        if (query_brand == "samsung") {
-            brand.push("삼성");
-        } else if (query_brand == "apple") {
-            brand.push("애플");
-        } else {
-            brand.push("기타");
+        let query = "SELECT * FROM products";
+        let params = [];
+
+        // 브랜드 필터링
+        if (query_brand) {
+            let brand = "";
+            if (query_brand === "samsung") {
+                brand = "삼성";
+            } else if (query_brand === "apple") {
+                brand = "애플";
+            }
+            
+            if (brand) {
+                query += " WHERE brand = ?";
+                params.push(brand);
+            }
         }
 
-        const result = await conn.query(
-            "SELECT * FROM products WHERE brand = (?)",
-            [brand[0]]
-        );
+        // 검색어 처리
+        if (search) {
+            if (params.length > 0) {
+                query += " AND";
+            } else {
+                query += " WHERE";
+            }
+            query += " name LIKE ?";
+            params.push(`%${search}%`);
+        }
+
+        console.log("실행되는 쿼리:", query);
+        console.log("파라미터:", params);
+
+        const result = await conn.query(query, params);
         conn.release();
 
         res.json(result);
