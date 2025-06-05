@@ -275,3 +275,32 @@
         opacity: 0;
     }
 }
+
+/* Nav.css 수정 */
+.nav-search-container {
+    margin-right: 2rem;
+    position: relative;
+    flex: 1; /* 남은 공간 모두 차지 */
+    max-width: 500px; /* 최대 너비 제한 */
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .NavContainer {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-search-container {
+        order: 2;
+        margin: 0;
+        width: 100%;
+        max-width: none;
+    }
+
+    .gooey-nav-container {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Cookies } from "react-cookie";
 import CryptoJS from "crypto-js";
 import "./Nav.css";
+import SearchBox from "../SearchBox/SearchBox";
 
 const cookies = new Cookies();
 const secretKey = "superduper";
@@ -48,6 +49,9 @@ export default function Nav() {
         // 효과 연출은 필요시 GooeyNav의 makeParticles 등 추가
     };
 
+    // 현재 경로가 "/phone/"을 포함할 경우에만 표시
+    const showSearchBox = location.pathname.includes("/phone/");
+
     return (
         <>
             <div className="Container">
@@ -67,6 +71,10 @@ export default function Nav() {
                             }}
                             alt="홈"
                         />
+                        {/* 검색창 */}
+                        <div className="nav-search-container">
+                            {showSearchBox && <SearchBox />}
+                        </div>
                         {/* GooeyNav 스타일 버튼 영역 */}
                         <div className="gooey-nav-container" ref={containerRef}>
                             <nav>
