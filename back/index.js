@@ -132,6 +132,7 @@ app.post("/register", async (req, res) => {
 app.get("/cart", async (req, res) => {
     try {
         const ID = req.query.ID;
+        const product_info = new Array();
         const conn = await pool.getConnection();
         const user_ID = await conn.query(
             "SELECT user_id FROM users WHERE ID = (?)",
@@ -141,14 +142,18 @@ app.get("/cart", async (req, res) => {
             "SElECT product_id,quantity FROM cart WHERE user_id =(?)",
             [user_ID[0].user_id]
         );
-        const result = await conn.query(
-            "SELECT * FROM products WHERE product_id = (?)",
-            [cart_Info[0].product_id]
-        );
+        for (const [index, item] of cart_Info.entries()) {
+            const temp = await conn.query(
+                "SELECT * FROM products WHERE product_id = (?)",
+                [item.product_id]
+            );
+            temp[0].quantity = cart_Info[index].quantity;
+            product_info.push(temp);
+        }
 
         conn.release();
 
-        res.json(result);
+        res.json(product_info);
     } catch (error) {
         console.error("장바구니 에러:", error);
         res.status(500).json({ error: "장바구니 처리 실패" });
@@ -156,41 +161,31 @@ app.get("/cart", async (req, res) => {
 });
 
 //제품목록 페이지
+
 app.get("/phone", async (req, res) => {
     try {
+        const brand = [];
         const query_brand = req.query.brand;
-        const search = req.query.search;
         const conn = await pool.getConnection();
 
-        let brand;
         if (query_brand == "samsung") {
-            brand = "삼성";
+            brand.push("삼성");
         } else if (query_brand == "apple") {
-            brand = "애플";
+            brand.push("애플");
         } else {
-            brand = "기타";
+            brand.push("기타");
         }
 
-        let sql = "SELECT * FROM products WHERE brand = ?";
-        const params = [brand];
-
-        if (search) {
-            sql += " AND name LIKE ?";
-            params.push(`%${search}%`);
-        }
-
-        const result = await conn.query(sql, params);
-
-        // const result = await conn.query(
-        //     "SELECT * FROM products WHERE brand = (?)",
-        //     [brand[0]]
-        // );
+        const result = await conn.query(
+            "SELECT * FROM products WHERE brand = (?)",
+            [brand[0]]
+        );
         conn.release();
-        console.log(result);
+
         res.json(result);
     } catch (error) {
         console.error("제품목록 페이지 에러", error);
-        res.status(500).json([]);
+        res.status(500).json({ error: "제품목록 페이지 에러" });
     }
 });
 
