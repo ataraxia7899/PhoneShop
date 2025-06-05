@@ -179,7 +179,7 @@ app.get("/phone", async (req, res) => {
             } else if (query_brand === "apple") {
                 brand = "애플";
             }
-            
+
             if (brand) {
                 query += " WHERE brand = ?";
                 params.push(brand);
@@ -197,8 +197,8 @@ app.get("/phone", async (req, res) => {
             params.push(`%${search}%`);
         }
 
-        console.log("실행되는 쿼리:", query);
-        console.log("파라미터:", params);
+        // console.log("실행되는 쿼리:", query);
+        // console.log("파라미터:", params);
 
         const result = await conn.query(query, params);
         conn.release();
