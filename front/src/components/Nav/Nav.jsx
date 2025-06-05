@@ -138,6 +138,7 @@ export default function Nav() {
                                     className="loginButtonstyle"
                                     onClick={() => {
                                         navigate("/LogIn");
+                                        setActiveIndex();
                                     }}
                                 >
                                     로그인
@@ -146,6 +147,7 @@ export default function Nav() {
                                     className="loginButtonstyle"
                                     onClick={() => {
                                         navigate("/SignUp");
+                                        setActiveIndex();
                                     }}
                                 >
                                     회원가입
