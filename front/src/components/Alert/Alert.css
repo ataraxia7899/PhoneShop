@@ -1,0 +1,198 @@
+/* components/Alert/Alert.css */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.alert-box {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+    position: relative;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alert-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+.alert-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.alert-message {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.alert-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.alert-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.alert-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.alert-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.alert-btn-secondary {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 2px solid #dee2e6;
+}
+
+.alert-btn-secondary:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+/* 경고창 타입별 스타일 */
+.alert-success .alert-icon {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.alert-warning .alert-icon {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: #333;
+}
+
+.alert-error .alert-icon {
+    background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+}
+
+.alert-info .alert-icon {
+    background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .alert-box {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .alert-buttons {
+        flex-direction: column;
+    }
+
+    .alert-btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .alert-title {
+        font-size: 18px;
+    }
+
+    .alert-message {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alert-box {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .alert-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
