@@ -141,15 +141,15 @@ export default function Cart() {
     // 아이템 삭제
     const removeItem = (id) => {
         setCartItems(cartItems.filter((item) => item.id !== id));
-        fetch(`${API_URL}/remove`,{
+        fetch(`${API_URL}/remove`, {
             method: "POST",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 ID: ID,
-                productID: id
-            })
+                productID: id,
+            }),
         });
     };
 
@@ -264,7 +264,7 @@ export default function Cart() {
                                         .filter((item) => item.checked)
                                         .map((item) => {
                                             removeItem(item.id);
-                                            return item.id
+                                            return item.id;
                                         });
                                     setCartItems(
                                         cartItems.filter(
@@ -310,27 +310,7 @@ export default function Cart() {
                                             {item.name}
                                         </div>
                                         <div className="item-options">
-                                            <select
-                                                value={item.selectedColorIndex}
-                                                onChange={(e) =>
-                                                    updateItemOption(
-                                                        item.id,
-                                                        "selectedColorIndex",
-                                                        parseInt(e.target.value)
-                                                    )
-                                                }
-                                            >
-                                                {item.colorOptions?.map(
-                                                    (color, index) => (
-                                                        <option
-                                                            key={index}
-                                                            value={index}
-                                                        >
-                                                            {color}
-                                                        </option>
-                                                    )
-                                                )}
-                                            </select>
+                                            <span>{item.colorOptions[0]}</span>
                                             <span className="option-separator">
                                                 |
                                             </span>
