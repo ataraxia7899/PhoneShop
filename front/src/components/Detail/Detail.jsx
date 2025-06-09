@@ -152,28 +152,38 @@ const Detail = () => {
                                     </span>
                                 </div>
                             ) : (
-                                <div className="option-buttons">
-                                    {item.storageOptions.map(
-                                        (storage, index) => (
-                                            <button
-                                                key={index}
-                                                className={`option-btn ${
-                                                    selectedStorageIndex ===
-                                                    index
-                                                        ? "selected"
-                                                        : ""
-                                                }`}
-                                                onClick={() =>
-                                                    setSelectedStorageIndex(
+                                <>
+                                    <div className="option-buttons">
+                                        {item.storageOptions.map(
+                                            (storage, index) => (
+                                                <button
+                                                    key={index}
+                                                    className={`option-btn ${
+                                                        selectedStorageIndex ===
                                                         index
-                                                    )
-                                                }
-                                            >
-                                                {storage}
-                                            </button>
-                                        )
-                                    )}
-                                </div>
+                                                            ? "selected"
+                                                            : ""
+                                                    }`}
+                                                    onClick={() =>
+                                                        setSelectedStorageIndex(
+                                                            index
+                                                        )
+                                                    }
+                                                >
+                                                    {storage}
+                                                </button>
+                                            )
+                                        )}
+                                    </div>
+                                    <p className="selected-option">
+                                        선택된 용량:{" "}
+                                        {
+                                            item.storageOptions[
+                                                selectedStorageIndex
+                                            ]
+                                        }
+                                    </p>
+                                </>
                             )}
                         </div>
                     )}
@@ -193,23 +203,34 @@ const Detail = () => {
                                     </span>
                                 </div>
                             ) : (
-                                <div className="option-buttons">
-                                    {item.colorOptions.map((color, index) => (
-                                        <button
-                                            key={index}
-                                            className={`option-btn color-btn ${
-                                                selectedColorIndex === index
-                                                    ? "selected"
-                                                    : ""
-                                            }`}
-                                            onClick={() =>
-                                                setSelectedColorIndex(index)
-                                            }
-                                        >
-                                            {color}
-                                        </button>
-                                    ))}
-                                </div>
+                                <>
+                                    <div className="option-buttons">
+                                        {item.colorOptions.map(
+                                            (color, index) => (
+                                                <button
+                                                    key={index}
+                                                    className={`option-btn color-btn ${
+                                                        selectedColorIndex ===
+                                                        index
+                                                            ? "selected"
+                                                            : ""
+                                                    }`}
+                                                    onClick={() =>
+                                                        setSelectedColorIndex(
+                                                            index
+                                                        )
+                                                    }
+                                                >
+                                                    {color}
+                                                </button>
+                                            )
+                                        )}
+                                    </div>
+                                    <p className="selected-option">
+                                        선택된 색상:{" "}
+                                        {item.colorOptions[selectedColorIndex]}
+                                    </p>
+                                </>
                             )}
                         </div>
                     )}
