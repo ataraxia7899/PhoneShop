@@ -128,7 +128,52 @@ app.post("/register", async (req, res) => {
     }
 });
 
-// 장바구니
+//장바구니 추가
+
+app.get("/detail", async (req, res) => {
+    try {
+        const ID = req.query.ID;
+        const productID = req.query.productID;
+        const conn = await pool.getConnection();
+        const userID = await conn.query(
+            "SELECT user_id FROM users WHERE ID = (?)",
+            [ID]
+        );
+        conn.query("INSERT INTO cart (user_id, product_id) VALUES ((?), (?))", [
+            userID[0].user_id,
+            productID,
+        ]);
+        conn.release();
+    } catch (error) {
+        console.error("장바구니 추가 에러:", error);
+        res.status(500).json({ error: "장바구니 추가 실패" });
+    }
+});
+
+//장바구니 삭제
+
+app.post("/remove", async (req, res) => {
+    try {
+        const ID = req.body.ID;
+        const productID = req.body.productID;
+        const conn = await pool.getConnection();
+        const data = await conn.query(
+            "SELECT user_id FROM users WHERE ID = (?)",
+            [ID]
+        );
+        const user_ID = data[0].user_id;
+        conn.query(
+            "DELETE FROM cart WHERE user_id = (?) AND product_id = (?)",
+            [user_ID, productID]
+        );
+        conn.release();
+    } catch (error) {
+        console.error("장바구니 삭제 에러:", error);
+        res.status(500).json({ error: "장바구니 삭제 실패" });
+    }
+});
+
+// 장바구니 불러오기
 app.get("/cart", async (req, res) => {
     try {
         const ID = req.query.ID;
