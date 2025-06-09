@@ -18,7 +18,9 @@ const Detail = () => {
     const from = location.state?.from;
     // state 끝에 ? 를 추가해 옵셔널 체이닝 기능을 통해 오류 방지
 
-    const [selectedStorage, setSelectedStorage] = useState(item?.storage || "");
+    const [selectedStorageIndex, setSelectedStorageIndex] = useState(
+        item?.selectedStorageIndex || 0
+    );
     const [selectedColorIndex, setSelectedColorIndex] = useState(
         item?.selectedColorIndex || 0
     );
@@ -128,12 +130,12 @@ const Detail = () => {
                                     <button
                                         key={index}
                                         className={`option-btn ${
-                                            selectedStorage === storage
+                                            selectedStorageIndex === index
                                                 ? "selected"
                                                 : ""
                                         }`}
                                         onClick={() =>
-                                            setSelectedStorage(storage)
+                                            setSelectedStorageIndex(index)
                                         }
                                     >
                                         {storage}
@@ -141,7 +143,8 @@ const Detail = () => {
                                 ))}
                             </div>
                             <p className="selected-option">
-                                선택된 용량: {selectedStorage}
+                                선택된 용량:{" "}
+                                {item.storageOptions[selectedStorageIndex]}
                             </p>
                         </div>
                     )}
