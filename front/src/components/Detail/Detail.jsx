@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Cookies } from "react-cookie";
+import CryptoJS from "crypto-js";
 import "./Detail.css";
 import Alert from "../Alert/Alert";
+import { getApiUrl } from "../../utils/config";
 
 const cookies = new Cookies();
+const secretKey = "superduper";
 
 const Detail = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const API_URL = getApiUrl();
 
     const [login, setLogin] = useState(false);
-
+    const [userID, setUserID] = useState();
     // Cart에서 제품 이름 클릭했을때 제목 값 (item)이나 제품 목록에서 구매하기 클릭 시 제품 제목
     const item = location.state?.item;
     // 이전 컴포넌트 이름을 from으로 전달받음
@@ -42,6 +46,7 @@ const Detail = () => {
     function goToCart() {
         if (login) {
             // 로그인된 경우 - 장바구니 추가 성공 알림
+            fetch(`${API_URL}/detail/?ID=${userID}&productID=${item.id}`);
             setAlertConfig({
                 type: "success",
                 title: "장바구니 추가",
@@ -85,6 +90,13 @@ const Detail = () => {
 
     useEffect(() => {
         const encryptedID = cookies.get("ID");
+        if (encryptedID !== undefined) {
+            const decryptedID = CryptoJS.AES.decrypt(
+                encryptedID,
+                secretKey
+            ).toString(CryptoJS.enc.Utf8);
+            setUserID(decryptedID);
+        }
         encryptedID && setLogin(true);
     }, []);
 
