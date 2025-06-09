@@ -1,466 +1,607 @@
 /* 전체 래퍼 */
 .phonelist_container2 {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 20px;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 40px;
-	background: #ffffff;
-	border-radius: 15px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	margin-top: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
 }
 
 /* 이미지 섹션 */
 .phonelist_container2-1 {
-	padding: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-	border-radius: 15px 0 0 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px 0 0 15px;
 }
 
 .phonelist_container2-1 img {
-	width: 100%;
-	max-width: 400px;
-	height: auto;
-	border-radius: 12px;
-	transition: all 0.3s ease;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .phonelist_container2-1 img:hover {
-	transform: scale(1.05);
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 /* 상품 정보 섹션 */
 .phonelist_container2-2 {
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	background: #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
 }
 
 /* 상품명 (h1) */
 .phonelist_container2-2 h1 {
-	font-size: 28px;
-	font-weight: 700;
-	color: #2c3e50;
-	margin-bottom: 12px;
-	line-height: 1.3;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* 브랜드명 (h4) */
 .phonelist_container2-2 h4 {
-	font-size: 16px;
-	color: #7f8c8d;
-	margin-bottom: 15px;
-	font-weight: 500;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* 가격 정보 (h2) */
 .phonelist_container2-2 h2 {
-	font-size: 26px;
-	font-weight: 700;
-	color: #ffffff;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	padding: 15px 20px;
-	border-radius: 10px;
-	margin: 15px 0;
-	text-align: center;
-	box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 /* 최종 가격 (h3) */
 .phonelist_container2-2 h3 {
-	font-size: 18px;
-	color: #34495e;
-	margin-bottom: 15px;
-	font-weight: 600;
-	text-align: center;
-	padding: 10px;
-	background: #f8f9fa;
-	border-radius: 8px;
-	border-left: 4px solid #667eea;
+    font-size: 18px;
+    color: #34495e;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
 }
 
 /* 상품 옵션 정보 (용량, 색상, 수량) */
 .phonelist_container2-2 h4:not(:nth-of-type(2)) {
-	font-size: 16px;
-	color: #495057;
-	margin-bottom: 10px;
-	padding: 8px 15px;
-	background: #e9ecef;
-	border-radius: 6px;
-	font-weight: 600;
-	display: inline-block;
-	margin-right: 10px;
-	border-left: 3px solid #28a745;
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background: #e9ecef;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 10px;
+    border-left: 3px solid #28a745;
 }
 
 /* 혜택 정보 (h5) */
 .phonelist_container2-2 h5 {
-	font-size: 18px;
-	font-weight: 700;
-	color: #1976d2;
-	margin: 20px 0 10px 0;
-	padding: 12px 15px;
-	background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-	border-radius: 8px;
-	border-left: 4px solid #2196f3;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1976d2;
+    margin: 20px 0 10px 0;
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
 }
 
 /* 혜택 상세 정보 (h6) */
 .phonelist_container2-2 h6 {
-	font-size: 14px;
-	color: #424242;
-	margin-bottom: 20px;
-	line-height: 1.5;
-	padding: 10px 15px;
-	background: #f5f5f5;
-	border-radius: 6px;
-	font-weight: 500;
+    font-size: 14px;
+    color: #424242;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    font-weight: 500;
 }
 
 /* 버튼 스타일 */
 .phonelist_container2-2 button {
-	padding: 15px 30px;
-	border: none;
-	border-radius: 10px;
-	font-size: 16px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-	position: relative;
-	overflow: hidden;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .phonelist_container2-2 button::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.2),
-		transparent
-	);
-	transition: left 0.5s;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.5s;
 }
 
 .phonelist_container2-2 button:hover::before {
-	left: 100%;
+    left: 100%;
 }
 
 .phonelist_container2-2 button:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
 .phonelist_container2-2 button:active {
-	transform: translateY(-1px);
+    transform: translateY(-1px);
 }
 
-/* 반응형 디자인 */
-@media (max-width: 1024px) {
-	.phonelist_container2 {
-		grid-template-columns: 1fr;
-		gap: 0;
-		margin: 10px;
-	}
-
-	.phonelist_container2-1 {
-		border-radius: 15px 15px 0 0;
-	}
-
-	.phonelist_container2-2 {
-		border-radius: 0 0 15px 15px;
-	}
-}
-
-@media (max-width: 768px) {
-	.phonelist_container2 {
-		margin: 10px;
-		padding: 15px;
-	}
-
-	.phonelist_container2-1 {
-		padding: 20px;
-	}
-
-	.phonelist_container2-2 {
-		padding: 20px;
-	}
-
-	.phonelist_container2-2 h1 {
-		font-size: 24px;
-	}
-
-	.phonelist_container2-2 h2 {
-		font-size: 22px;
-	}
-
-	.phonelist_container2-2 h4:not(:nth-of-type(2)) {
-		display: block;
-		margin-bottom: 8px;
-		margin-right: 0;
-	}
-}
-
-@media (max-width: 480px) {
-	.phonelist_container2 {
-		margin: 5px;
-		padding: 10px;
-	}
-
-	.phonelist_container2-1 {
-		padding: 15px;
-	}
-
-	.phonelist_container2-2 {
-		padding: 15px;
-	}
-
-	.phonelist_container2-2 h1 {
-		font-size: 20px;
-	}
-
-	.phonelist_container2-2 h2 {
-		font-size: 20px;
-		padding: 12px 15px;
-	}
-}
-
-/* 로딩 애니메이션 */
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-.phonelist_container2 {
-	animation: fadeInUp 0.6s ease-out;
-}
-
-/* 호버 효과 */
-.phonelist_container2:hover {
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-	transition: box-shadow 0.3s ease;
-}
-
+/* 버튼 섹션 */
 .button-section {
-	display: flex;
-	gap: 15px;
-	margin-top: 30px;
-	flex-wrap: wrap;
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .btn-cart,
 .btn-order,
 .btn-secondary {
-	flex: 1;
-	min-width: 150px;
-	padding: 15px 20px;
-	border: none;
-	border-radius: 10px;
-	font-size: 16px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+    flex: 1;
+    min-width: 150px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-cart {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
-	box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .btn-cart:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
 .btn-order {
-	background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-	color: white;
-	box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
 }
 
 .btn-order:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 25px rgba(40, 167, 69, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.4);
 }
 
 .btn-secondary {
-	background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-	color: white;
-	box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
 }
 
 .btn-secondary:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4);
 }
 
+/* 에러 컨테이너 */
 .error-container {
-	text-align: center;
-	padding: 60px 20px;
-	background: white;
-	border-radius: 15px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-	max-width: 500px;
-	margin: 50px auto;
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
 }
 
 .error-container h2 {
-	color: #e74c3c;
-	margin-bottom: 20px;
-	font-size: 24px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-	.button-section {
-		flex-direction: column;
-	}
-
-	.btn-cart,
-	.btn-order,
-	.btn-secondary {
-		width: 100%;
-		margin-bottom: 10px;
-	}
-}
-
-/* Detail.css에 추가할 옵션 관련 스타일 */
-
+/* 옵션 관련 스타일 */
 .option-section {
-	margin: 20px 0;
-	padding: 15px;
-	background: #f8f9fa;
-	border-radius: 8px;
-	border-left: 4px solid #667eea;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
 }
 
 .option-title {
-	font-size: 16px;
-	font-weight: 600;
-	color: #495057;
-	margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 12px;
 }
 
 .option-buttons {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .option-btn {
-	padding: 8px 16px;
-	border: 2px solid #dee2e6;
-	border-radius: 6px;
-	background: white;
-	color: #495057;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	font-weight: 500;
+    padding: 8px 16px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    background: white;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .option-btn:hover {
-	border-color: #667eea;
+    border-color: #667eea;
 }
 
 .option-btn.selected {
-	border-color: #667eea;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
-	font-weight: 600;
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
 }
 
 .color-btn {
-	min-width: 80px;
+    min-width: 80px;
 }
 
 .selected-option {
-	font-size: 14px;
-	color: #28a745;
-	font-weight: 600;
-	margin: 0;
+    font-size: 14px;
+    color: #28a745;
+    font-weight: 600;
+    margin: 0;
 }
 
 .quantity-controls {
-	display: flex;
-	align-items: center;
-	gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .quantity-btn {
-	width: 40px;
-	height: 40px;
-	border: 2px solid #667eea;
-	border-radius: 50%;
-	background: white;
-	color: #667eea;
-	font-size: 18px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #667eea;
+    border-radius: 50%;
+    background: white;
+    color: #667eea;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .quantity-btn:hover:not(:disabled) {
-	background: #667eea;
-	color: white;
+    background: #667eea;
+    color: white;
 }
 
 .quantity-btn:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .quantity-display {
-	font-size: 16px;
-	font-weight: 600;
-	color: #495057;
-	min-width: 60px;
-	text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* 조회 전용 스타일 - 새로 추가된 부분 */
+.cart-readonly-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+    border: 2px solid #dee2e6;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.readonly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.readonly-header h3 {
+    color: #495057;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.readonly-badge {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(108, 117, 125, 0.3);
+}
+
+.quantity-display-readonly {
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-radius: 10px;
+    /* border: 2px solid #2196f3; */
+    box-shadow: 0 3px 10px rgba(33, 150, 243, 0.1);
+    text-align: center;
+}
+
+.quantity-info {
+    font-size: 18px;
+    color: #1565c0;
+    font-weight: 700;
+}
+
+.quantity-info strong {
+    color: #0d47a1;
+    font-size: 20px;
+}
+
+.readonly-notice {
+    font-size: 13px;
+    color: #757575;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.selected-info {
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    border-radius: 8px;
+    border: 2px solid #4caf50;
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-display {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.color-display {
+    padding: 10px 18px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 2px solid #4caf50;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.readonly-notice-box {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border-left: 5px solid #ffc107;
+    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.2);
+}
+
+.readonly-notice-box p {
+    margin: 0;
+    color: #856404;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 로딩 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.phonelist_container2 {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* 호버 효과 */
+.phonelist_container2:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
 }
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
-	.option-buttons {
-		justify-content: center;
-	}
+@media (max-width: 1024px) {
+    .phonelist_container2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 10px;
+    }
 
-	.option-btn {
-		flex: 1;
-		min-width: 80px;
-	}
+    .phonelist_container2-1 {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .phonelist_container2-2 {
+        border-radius: 0 0 15px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .phonelist_container2 {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .phonelist_container2-1 {
+        padding: 20px;
+    }
+
+    .phonelist_container2-2 {
+        padding: 20px;
+    }
+
+    .phonelist_container2-2 h1 {
+        font-size: 24px;
+    }
+
+    .phonelist_container2-2 h2 {
+        font-size: 22px;
+    }
+
+    .phonelist_container2-2 h4:not(:nth-of-type(2)) {
+        display: block;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+
+    .button-section {
+        flex-direction: column;
+    }
+
+    .btn-cart,
+    .btn-order,
+    .btn-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .option-buttons {
+        justify-content: center;
+    }
+
+    .option-btn {
+        flex: 1;
+        min-width: 80px;
+    }
+
+    .readonly-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .cart-readonly-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .phonelist_container2 {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .phonelist_container2-1 {
+        padding: 15px;
+    }
+
+    .phonelist_container2-2 {
+        padding: 15px;
+    }
+
+    .phonelist_container2-2 h1 {
+        font-size: 20px;
+    }
+
+    .phonelist_container2-2 h2 {
+        font-size: 20px;
+        padding: 12px 15px;
+    }
+
+    .cart-readonly-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .readonly-header h3 {
+        font-size: 18px;
+    }
+
+    .quantity-info {
+        font-size: 16px;
+    }
+
+    .info-display {
+        font-size: 14px;
+    }
 }

@@ -136,86 +136,95 @@ const Detail = () => {
                     {/* 저장 용량 정보 */}
                     {item.storageOptions && item.storageOptions.length > 0 && (
                         <div className="option-section">
-                            <h4 className="option-title">용량 선택:</h4>
-                            <div className="option-buttons">
-                                {item.storageOptions.map((storage, index) => (
-                                    <button
-                                        key={index}
-                                        className={`option-btn ${
-                                            selectedStorageIndex === index
-                                                ? "selected"
-                                                : ""
-                                        }`}
-                                        onClick={() =>
-                                            setSelectedStorageIndex(index)
+                            <h4 className="option-title">
+                                {from === "cart"
+                                    ? "선택된 용량:"
+                                    : "용량 선택:"}
+                            </h4>
+                            {from === "cart" ? (
+                                <div className="selected-info">
+                                    <span className="info-display">
+                                        {
+                                            item.storageOptions[
+                                                selectedStorageIndex
+                                            ]
                                         }
-                                    >
-                                        {storage}
-                                    </button>
-                                ))}
-                            </div>
-                            <p className="selected-option">
-                                선택된 용량:{" "}
-                                {item.storageOptions[selectedStorageIndex]}
-                            </p>
+                                    </span>
+                                </div>
+                            ) : (
+                                <div className="option-buttons">
+                                    {item.storageOptions.map(
+                                        (storage, index) => (
+                                            <button
+                                                key={index}
+                                                className={`option-btn ${
+                                                    selectedStorageIndex ===
+                                                    index
+                                                        ? "selected"
+                                                        : ""
+                                                }`}
+                                                onClick={() =>
+                                                    setSelectedStorageIndex(
+                                                        index
+                                                    )
+                                                }
+                                            >
+                                                {storage}
+                                            </button>
+                                        )
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
 
                     {/* 상품 색상 정보 */}
                     {item.colorOptions && item.colorOptions.length > 0 && (
                         <div className="option-section">
-                            <h4 className="option-title">색상 선택:</h4>
-                            <div className="option-buttons">
-                                {item.colorOptions.map((color, index) => (
-                                    <button
-                                        key={index}
-                                        className={`option-btn color-btn ${
-                                            selectedColorIndex === index
-                                                ? "selected"
-                                                : ""
-                                        }`}
-                                        onClick={() =>
-                                            setSelectedColorIndex(index)
-                                        }
-                                    >
-                                        {color}
-                                    </button>
-                                ))}
-                            </div>
-                            <p className="selected-option">
-                                선택된 색상:{" "}
-                                {item.colorOptions[selectedColorIndex]}
-                            </p>
+                            <h4 className="option-title">
+                                {from === "cart"
+                                    ? "선택된 색상:"
+                                    : "색상 선택:"}
+                            </h4>
+                            {from === "cart" ? (
+                                <div className="selected-info">
+                                    <span className="info-display color-display">
+                                        {item.colorOptions[selectedColorIndex]}
+                                    </span>
+                                </div>
+                            ) : (
+                                <div className="option-buttons">
+                                    {item.colorOptions.map((color, index) => (
+                                        <button
+                                            key={index}
+                                            className={`option-btn color-btn ${
+                                                selectedColorIndex === index
+                                                    ? "selected"
+                                                    : ""
+                                            }`}
+                                            onClick={() =>
+                                                setSelectedColorIndex(index)
+                                            }
+                                        >
+                                            {color}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     )}
 
                     {/* Cart에서 온 경우에만 수량 표시 */}
                     {from === "cart" && (
                         <div className="option-section">
-                            <h4 className="option-title">수량 선택:</h4>
-                            <div className="quantity-controls">
-                                <button
-                                    className="quantity-btn"
-                                    onClick={() =>
-                                        setQuantity((prev) =>
-                                            prev > 1 ? prev - 1 : 1
-                                        )
-                                    }
-                                    disabled={quantity <= 1}
-                                >
-                                    -
-                                </button>
-                                <span className="quantity-display">
-                                    {quantity}개
+                            <h4 className="option-title">수량 정보:</h4>
+                            <div className="quantity-display-readonly">
+                                <span className="quantity-info">
+                                    <strong>{quantity}개</strong>
                                 </span>
-                                <button
-                                    className="quantity-btn"
-                                    onClick={() =>
-                                        setQuantity((prev) => prev + 1)
-                                    }
-                                >
-                                    +
-                                </button>
+                                <p className="readonly-notice">
+                                    * 수량 변경은 장바구니에서 가능합니다
+                                </p>
                             </div>
                         </div>
                     )}
