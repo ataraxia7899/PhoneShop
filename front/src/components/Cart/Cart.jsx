@@ -141,6 +141,16 @@ export default function Cart() {
     // 아이템 삭제
     const removeItem = (id) => {
         setCartItems(cartItems.filter((item) => item.id !== id));
+        fetch(`${API_URL}/remove`,{
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                ID: ID,
+                productID: id
+            })
+        });
     };
 
     // 선택된 아이템들의 총 가격 계산
@@ -252,7 +262,10 @@ export default function Cart() {
                                 onClick={() => {
                                     const selectedIds = cartItems
                                         .filter((item) => item.checked)
-                                        .map((item) => item.id);
+                                        .map((item) => {
+                                            removeItem(item.id);
+                                            return item.id
+                                        });
                                     setCartItems(
                                         cartItems.filter(
                                             (item) =>
