@@ -73,8 +73,9 @@ export default function Cart() {
                                 quantity: info[0].quantity,
                                 image: info[0].image_url,
                                 colorOptions: info[0].color.split("|"),
-                                selectedColorIndex: 0,
+                                selectedColorIndex: info[0].selectedColorIndex,
                                 storage: info[0].strg.split("|"),
+                                selectedStorageIndex:info[0].selectedStorageIndex,
                                 checked: false,
                             };
                             setCartItems((prev) => {
@@ -310,11 +311,11 @@ export default function Cart() {
                                             {item.name}
                                         </div>
                                         <div className="item-options">
-                                            <span>{item.colorOptions[0]}</span>
+                                            <span>{item.colorOptions[item.selectedColorIndex]}</span>
                                             <span className="option-separator">
                                                 |
                                             </span>
-                                            <span>{item.storage[0]}</span>
+                                            <span>{item.storage[item.selectedStorageIndex]}</span>
                                         </div>
                                     </div>
 

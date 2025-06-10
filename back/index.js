@@ -134,14 +134,18 @@ app.get("/detail", async (req, res) => {
     try {
         const ID = req.query.ID;
         const productID = req.query.productID;
+        const color = req.query.color;
+        const storage = req.query.storage;
         const conn = await pool.getConnection();
         const userID = await conn.query(
             "SELECT user_id FROM users WHERE ID = (?)",
             [ID]
         );
-        conn.query("INSERT INTO cart (user_id, product_id) VALUES ((?), (?))", [
+        conn.query("INSERT INTO cart (user_id, product_id, color, storage) VALUES ((?), (?), (?), (?))", [
             userID[0].user_id,
             productID,
+            color,
+            storage
         ]);
         conn.release();
     } catch (error) {
@@ -184,7 +188,7 @@ app.get("/cart", async (req, res) => {
             [ID]
         );
         const cart_Info = await conn.query(
-            "SElECT product_id,quantity FROM cart WHERE user_id =(?)",
+            "SElECT product_id,quantity,color,storage FROM cart WHERE user_id =(?)",
             [user_ID[0].user_id]
         );
         for (const [index, item] of cart_Info.entries()) {
@@ -193,6 +197,8 @@ app.get("/cart", async (req, res) => {
                 [item.product_id]
             );
             temp[0].quantity = cart_Info[index].quantity;
+            temp[0].selectedColorIndex = cart_Info[index].color;
+            temp[0].selectedStorageIndex = cart_Info[index].storage;
             product_info.push(temp);
         }
 

@@ -46,7 +46,7 @@ const Detail = () => {
     function goToCart() {
         if (login) {
             // 로그인된 경우 - 장바구니 추가 성공 알림
-            fetch(`${API_URL}/detail/?ID=${userID}&productID=${item.id}`);
+            fetch(`${API_URL}/detail/?ID=${userID}&productID=${item.id}&color=${selectedColorIndex}&storage=${selectedStorageIndex}`);
             setAlertConfig({
                 type: "success",
                 title: "장바구니 추가",
