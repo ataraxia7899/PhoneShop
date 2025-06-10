@@ -46,7 +46,9 @@ const Detail = () => {
     function goToCart() {
         if (login) {
             // 로그인된 경우 - 장바구니 추가 성공 알림
-            fetch(`${API_URL}/detail/?ID=${userID}&productID=${item.id}&color=${selectedColorIndex}&storage=${selectedStorageIndex}`);
+            fetch(
+                `${API_URL}/detail/?ID=${userID}&productID=${item.id}&color=${selectedColorIndex}&storage=${selectedStorageIndex}`
+            );
             setAlertConfig({
                 type: "success",
                 title: "장바구니 추가",
@@ -81,8 +83,10 @@ const Detail = () => {
     const goBack = () => {
         if (from === "cart") {
             navigate("/cart");
-        } else if (from === "phone") {
-            navigate("/phone"); // 또는 적절한 상품 목록 페이지
+        } else if (from === "phone" && item.brand === "삼성") {
+            navigate("/phone/?brand=samsung"); // 또는 적절한 상품 목록 페이지
+        } else if (from === "phone" && item.brand === "애플") {
+            navigate("/phone/?brand=apple"); // 또는 적절한 상품 목록 페이지
         } else {
             navigate(-1); // 기본적으로 브라우저 뒤로가기
         }
