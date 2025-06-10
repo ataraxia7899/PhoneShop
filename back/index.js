@@ -141,12 +141,25 @@ app.get("/detail", async (req, res) => {
             "SELECT user_id FROM users WHERE ID = (?)",
             [ID]
         );
-        conn.query("INSERT INTO cart (user_id, product_id, color, storage) VALUES ((?), (?), (?), (?))", [
-            userID[0].user_id,
-            productID,
-            color,
-            storage
-        ]);
+        const dupcheck = await conn.query("SELECT * FROM cart WHERE user_Id = (?) AND product_id = (?)",[userID[0].user_id, productID]);
+
+        if(dupcheck.length == 0) {
+            conn.query("INSERT INTO cart (user_id, product_id, color, storage) VALUES ((?), (?), (?), (?))", [
+                userID[0].user_id,
+                productID,
+                color,
+                storage
+            ]);
+        }
+        else {
+            conn.query("UPDATE cart SET color = (?) , storage = (?) where user_id = (?) AND product_id = (?)", [
+                color,
+                storage,
+                userID[0].user_id,
+                productID
+            ]);
+        }
+
         conn.release();
     } catch (error) {
         console.error("장바구니 추가 에러:", error);
