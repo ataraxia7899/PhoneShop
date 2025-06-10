@@ -54,7 +54,7 @@ app.get("/id", async (req, res) => {
     try {
         const input_ID = req.query.ID;
         const conn = await pool.getConnection();
-        const result = await conn.query("SELECT * FROM user WHERE ID = (?)", [
+        const result = await conn.query("SELECT * FROM users WHERE ID = (?)", [
             input_ID,
         ]);
 
@@ -78,7 +78,7 @@ app.post("/", async (req, res) => {
         const input_PW = req.body.PW;
 
         const conn = await pool.getConnection();
-        const result = await conn.query("SELECT * FROM user WHERE ID = (?)", [
+        const result = await conn.query("SELECT * FROM users WHERE ID = (?)", [
             input_ID,
         ]);
 
