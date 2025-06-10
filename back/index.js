@@ -114,7 +114,7 @@ app.post("/register", async (req, res) => {
         const newNick = req.body.Nickname;
 
         const conn = await pool.getConnection();
-        await conn.query("INSERT INTO user(ID, PW, Nickname) VALUES (?,?,?)", [
+        await conn.query("INSERT INTO users(ID, PW, Nickname) VALUES (?,?,?)", [
             newID,
             newPW,
             newNick,
