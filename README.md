@@ -139,6 +139,7 @@ npm run dev
 이 프로젝트는 MIT 라이선스 하에 배포됩니다.
 
 <hr>
-프로젝트 PPT : [PPT](https://docs.google.com/presentation/d/1x_Yb1qNNx6_fBLoRVNPVwvn6m2_AUmrq/edit?usp=drive_link&ouid=117204050729367980183&rtpof=true&sd=true)
-
-사용한 아이콘 출처 : [Flaticon](https://www.flaticon.com/)
+PPT : <a href="https://docs.google.com/presentation/d/1x_Yb1qNNx6_fBLoRVNPVwvn6m2_AUmrq/edit?usp=sharing" target="_blank">프로젝트 PPT</a>
+<br>
+<br>
+사용한 아이콘 출처 : <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>
