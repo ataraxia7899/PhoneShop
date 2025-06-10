@@ -112,7 +112,7 @@ const Detail = () => {
                         src="./src/assets/폴드2.jpg"
                         className="phonelist_img2"
                     /> */}
-                    <img src={item.image} alt={item.name} />
+                    <img src={item.image[selectedColorIndex]} alt={item.name} />
                 </div>
                 <div className="phonelist_container2-2">
                     {/* <h1>갤럭시Z 폴드6 자급제</h1> */}

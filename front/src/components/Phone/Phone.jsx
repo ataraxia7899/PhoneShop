@@ -46,7 +46,7 @@ const Phone = (props) => {
                     price: item.price,
                     storageOptions: item.strg?.split("|") || [],
                     colorOptions: item.color?.split("|") || [],
-                    image: item.image_url,
+                    image: item.image_url?.split("|") || [],
                     features: item.description?.split(",") || [],
                     stock: item.stock,
                     brand: item.brand,
@@ -77,7 +77,7 @@ const Phone = (props) => {
                 .map((product) => (
                     <div key={product.id} className="phonelist">
                         <img
-                            src={product.image}
+                            src={product.image[0]}
                             className="phonelist_img"
                             alt={product.name}
                             onClick={() => goToDetail(product)}
