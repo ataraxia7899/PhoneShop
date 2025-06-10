@@ -141,5 +141,6 @@ npm run dev
 <hr>
 PPT : <a href="https://docs.google.com/presentation/d/1x_Yb1qNNx6_fBLoRVNPVwvn6m2_AUmrq/edit?usp=sharing" target="_blank">프로젝트 PPT</a>
 <br>
+시연영상 : <a href="https://www.youtube.com/watch?v=qDKVAOtdP94&embeds_referring_euri=https%3A%2F%2Fhubblecontent.osi.office.net%2F&source_ve_path=Mjg2NjY" target="_blank">프로젝트 시연영상</a>
 <br>
 사용한 아이콘 출처 : <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>
