@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home/Home";
@@ -16,6 +17,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
+                <ScrollToTop />
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
