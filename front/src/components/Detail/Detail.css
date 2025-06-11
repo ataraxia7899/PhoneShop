@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
 }
 
 .phonelist_container2-1 img {
