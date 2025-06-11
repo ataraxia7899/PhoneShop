@@ -90,7 +90,10 @@ const Phone = (props) => {
                             {product.name}
                         </h2>
                         <h4>혜택가 {product.price.toLocaleString()}원</h4>
-                        <button onClick={() => goToDetail(product)}>
+                        <button
+                            style={{ cursor: "pointer" }}
+                            onClick={() => goToDetail(product)}
+                        >
                             주문하기
                         </button>
                         <ul className="feature-list">
