@@ -49,7 +49,6 @@ export default function Cart() {
             setID(decryptedID);
 
             fetch(`${API_URL}/cart/?ID=${decryptedID}`, {
-                // 주소 수정 필요
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -71,11 +70,12 @@ export default function Cart() {
                                 brand: info[0].brand,
                                 price: info[0].price,
                                 quantity: info[0].quantity,
-                                image: info[0].image_url,
+                                image: info[0].image_url?.split("|"),
                                 colorOptions: info[0].color.split("|"),
                                 selectedColorIndex: info[0].selectedColorIndex,
                                 storage: info[0].strg.split("|"),
-                                selectedStorageIndex:info[0].selectedStorageIndex,
+                                selectedStorageIndex:
+                                    info[0].selectedStorageIndex,
                                 checked: false,
                             };
                             setCartItems((prev) => {
@@ -294,7 +294,14 @@ export default function Cart() {
                                     </label>
 
                                     <div className="item-image">
-                                        <img src={item.image} alt={item.name} />
+                                        <img
+                                            src={
+                                                item.image[
+                                                    item.selectedColorIndex
+                                                ]
+                                            }
+                                            alt={item.name}
+                                        />
                                     </div>
 
                                     <div className="item-details">
@@ -311,11 +318,24 @@ export default function Cart() {
                                             {item.name}
                                         </div>
                                         <div className="item-options">
-                                            <span>{item.colorOptions[item.selectedColorIndex]}</span>
+                                            <span>
+                                                {
+                                                    item.colorOptions[
+                                                        item.selectedColorIndex
+                                                    ]
+                                                }
+                                            </span>
                                             <span className="option-separator">
                                                 |
                                             </span>
-                                            <span>{item.storage[item.selectedStorageIndex]}</span>
+                                            <span>
+                                                {
+                                                    item.storage[
+                                                        item
+                                                            .selectedStorageIndex
+                                                    ]
+                                                }
+                                            </span>
                                         </div>
                                     </div>
 
