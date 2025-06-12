@@ -4,10 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Cookies } from "react-cookie";
 import CryptoJS from "crypto-js";
 import "./Nav.css";
+import { getApiUrl } from "../../utils/config";
 import SearchBox from "../SearchBox/SearchBox";
 
 const cookies = new Cookies();
 const secretKey = "superduper";
+
+// API URL 환경변수로 가져오기
+const API_URL = getApiUrl();
 
 // GooeyNav 버튼 데이터
 const navItems = [
@@ -31,7 +35,27 @@ export default function Nav() {
                 secretKey
             ).toString(CryptoJS.enc.Utf8);
             setLogin(true);
-            setID(decryptedID);
+            // setID(decryptedID);
+
+            fetch(`${API_URL}/nick/?ID=${decryptedID}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(
+                            `HTTP error! status: ${response.status}`
+                        );
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    const nick = data[0].Nickname;
+                    console.log(nick);
+                    setID(nick);
+                });
+            // setID(getNickname[0].Nickname || decryptedID);
         }
     }, [location.pathname]);
 

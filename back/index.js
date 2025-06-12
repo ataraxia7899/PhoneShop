@@ -49,6 +49,25 @@ if (!TOSS_CLIENT_KEY || !TOSS_SECRET_KEY) {
 
 // ==================== 사용자 관리 API ====================
 
+// 닉네임 있는지 확인 후 있으면 전달
+app.get("/nick", async (req, res) => {
+    try {
+        const input_ID = req.query.ID;
+        const conn = await pool.getConnection();
+        const result = await conn.query(
+            "SELECT Nickname FROM users WHERE ID = (?)",
+            [input_ID]
+        );
+
+        conn.release();
+        // console.log(input_ID.id);
+        result.length >= 1 && res.json(result);
+        console.log(result);
+    } catch (error) {
+        console.log("Nickname : Null");
+    }
+});
+
 // ID 중복 체크
 app.get("/id", async (req, res) => {
     try {
@@ -76,7 +95,6 @@ app.post("/", async (req, res) => {
     try {
         const input_ID = req.body.ID;
         const input_PW = req.body.PW;
-
         const conn = await pool.getConnection();
         const result = await conn.query("SELECT * FROM users WHERE ID = (?)", [
             input_ID,
@@ -141,23 +159,21 @@ app.get("/detail", async (req, res) => {
             "SELECT user_id FROM users WHERE ID = (?)",
             [ID]
         );
-        const dupcheck = await conn.query("SELECT * FROM cart WHERE user_Id = (?) AND product_id = (?)",[userID[0].user_id, productID]);
+        const dupcheck = await conn.query(
+            "SELECT * FROM cart WHERE user_Id = (?) AND product_id = (?)",
+            [userID[0].user_id, productID]
+        );
 
-        if(dupcheck.length == 0) {
-            conn.query("INSERT INTO cart (user_id, product_id, color, storage) VALUES ((?), (?), (?), (?))", [
-                userID[0].user_id,
-                productID,
-                color,
-                storage
-            ]);
-        }
-        else {
-            conn.query("UPDATE cart SET color = (?) , storage = (?) where user_id = (?) AND product_id = (?)", [
-                color,
-                storage,
-                userID[0].user_id,
-                productID
-            ]);
+        if (dupcheck.length == 0) {
+            conn.query(
+                "INSERT INTO cart (user_id, product_id, color, storage) VALUES ((?), (?), (?), (?))",
+                [userID[0].user_id, productID, color, storage]
+            );
+        } else {
+            conn.query(
+                "UPDATE cart SET color = (?) , storage = (?) where user_id = (?) AND product_id = (?)",
+                [color, storage, userID[0].user_id, productID]
+            );
         }
 
         conn.release();
