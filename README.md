@@ -124,7 +124,7 @@ npm run dev
 
 ## 🗄️ DB 테이블 구조
 
-![Image](https://github.com/user-attachments/assets/9d7ecae8-730d-4640-8935-5d1f36bfa2a7)
+![Image](https://github.com/user-attachments/assets/b5f4e9b3-a4ee-481f-ab62-a9f9ee213719)
 
 ## 🤝 기여 방법
 
